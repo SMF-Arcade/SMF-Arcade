@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -42,7 +42,7 @@ function Arcade_actions(&$actionArray)
 	if (empty($modSettings['arcadeEnabled']))
 		return;
 	
-	$actionArray['arcade'] = array('Arcade.php', 'Arcade');
+	$actionArray['arcade'] = array('Arcade.php', array('SMFArcade', 'Main'));
 }
 
 function Arcade_core_features(&$core_features)
@@ -138,7 +138,7 @@ function Arcade_profile_areas(&$profile_areas)
 
 function Arcade_menu_buttons(&$menu_buttons)
 {
-	global $context, $modSettings, $scripturl, $txt;
+	global $context, $modSettings, $scripturl;
 	
 	if (!$context['allow_admin'])
 		$context['allow_admin'] = allowedTo('arcade_admin');
@@ -161,7 +161,7 @@ function Arcade_menu_buttons(&$menu_buttons)
 
 function Arcade_admin_areas(&$admin_areas)
 {
-	global $context, $modSettings, $scripturl, $txt;
+	global $context, $modSettings, $scripturl;
 	
 	arcade_array_insert($admin_areas, 'members',
 		array(

@@ -2,9 +2,9 @@
 
 <project name="SMF_Arcade" default="dist">
 	<property name="repository" value="smfarcade" override="true" />
-	<property name="branch" value="2.5" override="true" />
+	<property name="branch" value="trunk" override="true" />
     <property name="package" value="${phing.project.name}" override="true" />
-	<property name="version" value="2.5" override="yes" />
+	<property name="version" value="2.6_Alpha" override="yes" />
 	
     <property name="builddir" value="./temp" override="true" />
 	<property name="docdir" value="./temp" override="true" />
@@ -19,7 +19,7 @@
 		<svnlastrevision
 			svnpath="/usr/bin/svn"
 			workingcopy="."
-			propertyname="svn.lastrevision"  lastChanged="true" />
+			propertyname="svn.lastrevision" lastChanged="true" />
 		
 		<available file="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" property="already_build" />
 		

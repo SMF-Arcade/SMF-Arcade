@@ -1,4 +1,4 @@
-// SMF Arcade 2.5 Alpha; arcade.js
+// SMF Arcade 2.6 Alpha; arcade.js
 // Handles ajax calls needed by arcade
 
 var ajax_wait = false;

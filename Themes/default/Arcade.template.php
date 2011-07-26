@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -87,14 +87,13 @@ function template_arcade_above()
 
 function template_arcade_below()
 {
-	global $arcade_version;
-
 	// Print out copyright and version. Removing copyright is not allowed by license
+	
 	echo '
 	</div>
 
 	<div id="arcade_bottom" class="smalltext" style="text-align: center;">
-		Powered by: <a href="http://www.smfarcade.info/" target="_blank">SMF Arcade ', $arcade_version, '</a> &copy; <a href="http://www.madjoki.com/" target="_blank">Niko Pahajoki</a> 2004-2011
+		Powered by: <a href="http://www.smfarcade.info/" target="_blank">SMF Arcade ', SMFArcade::VERSION, '</a> &copy; <a href="http://www.madjoki.com/" target="_blank">Niko Pahajoki</a> 2004-2011
 	</div>';
 
 }

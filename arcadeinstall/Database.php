@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -27,9 +27,8 @@ if (!defined('SMF'))
 
 global $addSettings, $tables, $permissions, $columnRename, $boarddir, $boardurl, $smcFunc;
 
-$arcade_version = '2.5';
-$arcade_lang_version = '2.5';
-$arcade_server = 'http://service.smfarcade.info/arcade';
+$arcade_version = '2.6';
+$arcade_lang_version = '2.6';
 
 // Settings array
 $addSettings = array(

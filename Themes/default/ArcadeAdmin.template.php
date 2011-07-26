@@ -3,13 +3,13 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
 function template_arcade_admin_main()
 {
-	global $context, $settings, $options, $txt, $modSettings, $arcade_version;
+	global $context, $settings, $options, $txt, $modSettings;
 
 	echo '
 	<div style="width: 49%" class="floatleft">
@@ -33,7 +33,7 @@ function template_arcade_admin_main()
 		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
 			<div style="overflow: auto; height: 18ex; padding: 0.5em;">
-				', $txt['arcade_installed_version'], ': <span id="arcade_installed_version">', $arcade_version, '</span><br />
+				', $txt['arcade_installed_version'], ': <span id="arcade_installed_version">', SMFArcade::VERSION, '</span><br />
 				', $txt['arcade_latest_version'], ': <span id="arcade_latest_version">???</span>
 			</div>
 			<span class="botslice"><span></span></span>
@@ -67,7 +67,7 @@ function template_arcade_admin_main()
 			setInnerHTML(document.getElementById("arcade_latest_version"), window.arcadeCurrentVersion);
 		}
 	// ]]></script>
-	<script language="JavaScript" type="text/javascript" src="http://service.smfarcade.info/arcade/news.js?v=', urlencode($arcade_version), '" defer="defer"></script>';
+	<script language="JavaScript" type="text/javascript" src="http://service.smfarcade.info/arcade/news.js?v=', urlencode(SMFArcade::VERSION), '" defer="defer"></script>';
 }
 
 function template_arcade_admin_maintenance()
@@ -219,18 +219,16 @@ function template_arcade_admin_category_edit()
 
 function template_arcadeadmin_above()
 {
-	global $scripturl, $txt, $modSettings, $context, $settings, $arcade_version;
+	global $scripturl, $txt, $modSettings, $context, $settings;
 
 }
 
 function template_arcadeadmin_below()
 {
-	global $arcade_version;
-
 	// Print out copyright and version. Removing copyright is not allowed by license
 	echo '
 	<div id="arcade_bottom" class="smalltext" style="text-align: center;">
-		Powered by: <a href="http://www.smfarcade.info/" target="_blank">SMF Arcade ', $arcade_version, '</a> &copy; <a href="http://www.madjoki.com/" target="_blank">Niko Pahajoki</a> 2004-2009
+		Powered by: <a href="http://www.smfarcade.info/" target="_blank">SMF Arcade ', SMFArcade::VERSION, '</a> &copy; <a href="http://www.madjoki.com/" target="_blank">Niko Pahajoki</a> 2004-2011
 	</div>';
 
 }

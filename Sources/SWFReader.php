@@ -3,7 +3,7 @@
  * SWF Reader
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 

@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -35,14 +35,14 @@ if (!defined('SMF'))
 
 function ArcadeAdmin()
 {
-	global $sourcedir, $scripturl, $txt, $modSettings, $context, $settings, $arcade_server;
+	global $sourcedir, $scripturl, $txt, $modSettings, $context, $settings;
 
 	require_once($sourcedir . '/Arcade.php');
 	require_once($sourcedir . '/Subs-ArcadeAdmin.php');
 	require_once($sourcedir . '/ManageServer.php');
 
 	isAllowedTo('arcade_admin');
-	loadArcade('admin', 'arcadesettings');
+	SMFArcade::loadArcade('admin', 'arcadesettings');
 
 	$context[$context['admin_menu_name']]['tab_data']['title'] = $txt['arcade_admin_settings'];
 	$context[$context['admin_menu_name']]['tab_data']['description'] = $txt['arcade_general_desc'];
@@ -187,7 +187,7 @@ function ArcadeAdminCategory()
 	require_once($sourcedir . '/Arcade.php');
 	require_once($sourcedir . '/Subs-ArcadeAdmin.php');
 
-	loadArcade('admin', 'managecategory');
+	SMFArcade::loadArcade('admin', 'managecategory');
 
 	$context[$context['admin_menu_name']]['tab_data']['title'] = $txt['arcade_manage_category'];
 	$context[$context['admin_menu_name']]['tab_data']['description'] = $txt['arcade_manage_category_desc'];

@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -36,7 +36,7 @@ function ArcadeMaintenance()
 	require_once($sourcedir . '/ManageServer.php');
 
 	isAllowedTo('arcade_admin');
-	loadArcade('admin', 'arcademaintenance');
+	SMFArcade::loadArcade('admin', 'arcademaintenance');
 
 	// Template
 	$context[$context['admin_menu_name']]['tab_data']['title'] = $txt['arcade_maintenance'];

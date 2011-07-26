@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -33,7 +33,7 @@ function ManageGames()
 
 	// Templates
 	loadTemplate('ManageGames');
-	loadArcade('admin', 'manage_games');
+	SMFArcade::loadArcade('admin', 'manage_games');
 
 	loadClassFile('Class-Package.php');
 
@@ -793,7 +793,7 @@ function EditGame2()
 
 function ExportGameInfo()
 {
-	global $scripturl, $txt, $db_prefix, $modSettings, $context, $sourcedir, $smcFunc, $boarddir, $arcade_version;
+	global $scripturl, $txt, $db_prefix, $modSettings, $context, $sourcedir, $smcFunc, $boarddir;
 
 	$id = loadGame((int) $_REQUEST['game'], true);
 
@@ -837,7 +837,7 @@ function ExportGameInfo()
 	<scoring>%d</scoring>
 	<submit>%s</submit>%s
 </game-info>',
-	$arcade_version,
+	SMFArcade::VERSION,
 	$game['internal_name'], htmlspecialchars($game['game_name']), htmlspecialchars($game['description']),
 	htmlspecialchars($game['help']), htmlspecialchars($game['thumbnail']), htmlspecialchars($game['thumbnail_small']),
 	$game['game_file'], $game['score_type'], $game['submit_system'], $extra

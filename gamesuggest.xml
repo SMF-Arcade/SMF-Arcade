@@ -18,7 +18,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 	<!-- This information needs to be the same as that in the package-info.xml. -->
 	<id>Niko:Arcade</id>
-	<version>2.5</version>
+	<version>{version}</version>
 
 	<file name="$sourcedir/Subs-Editor.php">
 		<operation>

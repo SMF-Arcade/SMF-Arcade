@@ -19,7 +19,7 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Niko:Arcade</id>
 	<name>SMF Arcade</name>
-	<version>2.5</version>
+	<version>2.6 Alpha</version>
 	<type>modification</type>
 
 	<install for="2.0">

@@ -3,7 +3,7 @@
  * SMF Arcade
  *
  * @package SMF Arcade
- * @version 2.5
+ * @version 2.6 Alpha
  * @license http://download.smfarcade.info/license.php New-BSD
  */
 
@@ -13,7 +13,7 @@ function arcadeStats($memID)
 
 	require_once($sourcedir . '/Arcade.php');
 
-	loadArcade('profile');
+	SMFArcade::loadArcade('profile');
 
 	$context['arcade']['member_stats'] = array();
 
@@ -107,7 +107,7 @@ function arcadeChallenge($memID)
 	require_once($sourcedir . '/ArcadeArena.php');
 	require_once($sourcedir . '/Subs-Members.php');
 
-	loadArcade('profile');
+	SMFArcade::loadArcade('profile');
 
 	if (!memberAllowedTo(array('arcade_join_match', 'arcade_join_invite_match'), $memID))
 		fatal_lang_error('arcade_no_invite', false);
@@ -142,7 +142,7 @@ function arcadeSettings($memID)
 
 	require_once($sourcedir . '/Arcade.php');
 
-	loadArcade('profile');
+	SMFArcade::loadArcade('profile');
 
 	$events = arcadeEvent('get');
 
