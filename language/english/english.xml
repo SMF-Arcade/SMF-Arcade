@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="modification.xsl" type="text/xsl"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	ATTENTION: If you are trying to install this manually, you should try
+	the package manager.  If it will not work for you, please take a look
+	at the following for information on this format:
+		http://mods.simplemachines.org/docs/manual-install.php
+
+================================================================================
+
+	Modification files can be used to modify files so that they do what
+	your package needs them to do to work properly.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<!-- This information needs to be the same as that in the package-info.xml. -->
+	<id>Niko:Arcade</id>
+	<version>2.5</version>
+
+	<file name="$languagedir/Modifications.english.php">
+		<operation>
+			<search position="end" />
+			<add><![CDATA[// Arcade start
+global $scripturl;
+
+// Arcade
+$txt['arcade'] = 'Arcade';
+
+// Core Features
+$txt['core_settings_item_arcade'] = 'Arcade';
+$txt['core_settings_item_arcade_desc'] = 'Enable Arcade section which allows users to play games and store their records for others to see.';
+
+// Admin
+$txt['arcade_admin'] = 'Arcade';
+$txt['arcade_manage_games'] = 'Games';
+$txt['arcade_manage_games_edit_games'] = 'Edit Games';
+$txt['arcade_manage_games_install'] = 'Install Games';
+$txt['arcade_manage_games_upload'] = 'Upload';
+$txt['arcade_manage_category'] = 'Categories';
+$txt['arcade_manage_category_list'] = 'List';
+$txt['arcade_manage_category_new'] = 'New';
+$txt['arcade_general'] = 'General';
+$txt['arcade_general_information'] = 'Information';
+$txt['arcade_general_settings'] = 'Settings';
+$txt['arcade_general_permissions'] = 'Permissions';
+$txt['arcade_maintenance'] = 'Maintenance';
+$txt['arcade_maintenance_main'] = 'Main';
+$txt['arcade_maintenance_highscore'] = 'Highscore';
+
+// Moderation Log
+$txt['modlog_ac_arcade_install_game'] = 'Installed Game &quot;{game}&quot;';
+$txt['modlog_ac_arcade_update_game'] = 'Updated Game &quot;{game}&quot;';
+$txt['modlog_ac_arcade_delete_game'] = 'Deleted Game &quot;{game}&quot;';
+$txt['modlog_ac_arcade_remove_scores'] = 'Removed {scores} scores from Game &quot;{game}&quot;';
+
+// Profile
+$txt['arcadeStats'] = 'Arcade Statistics';
+$txt['arcadeChallenge'] = 'Arcade Arena';
+$txt['sendArcadeChallenge'] = 'Send Challenge';
+$txt['arcadeSettings'] = 'Arcade Settings';
+
+// Permission names and help
+$txt['permissiongroup_arcade'] = 'Arcade';
+$txt['permissionname_arcade_view'] = 'View Arcade';
+$txt['permissionhelp_arcade_view'] = 'May access Arcade and use basic features like search and view highscores';
+$txt['permissionname_arcade_play'] = 'Play on Arcade';
+$txt['permissionhelp_arcade_play'] = 'Allows member to play, on Arcade, games which they have rights to';
+$txt['permissionname_arcade_admin'] = 'Administrate arcade';
+$txt['permissionhelp_arcade_admin'] = 'Arcade Administrator can Install/Edit/Delete game, Delete scores and edit settings for Arcade';
+$txt['permissionname_arcade_submit'] = 'Save scores';
+$txt['permissionhelp_arcade_submit'] = 'Allows users to save their scores.';
+$txt['permissionname_arcade_comment'] = 'Edit Comments';
+$txt['permissionhelp_arcade_comment'] = 'Allows user to edit comments, ';
+$txt['permissionname_arcade_comment_own'] = 'Own';
+$txt['permissionname_arcade_comment_any'] = 'Any';
+$txt['permissionname_arcade_user_stats'] = 'View User Statistics';
+$txt['permissionname_arcade_user_stats_own'] = 'Own';
+$txt['permissionname_arcade_user_stats_any'] = 'Any';
+$txt['permissionname_arcade_view_arena'] = 'View Arena';
+$txt['permissionname_arcade_create_match'] = 'Create a new match on Arena';
+$txt['permissionname_arcade_join_match'] = 'Join match on Arena';
+$txt['permissionname_arcade_join_invite_match'] = 'Join match on Arena when invited';
+$txt['permissionname_arcade_edit_settings'] = 'Edit Arcade Settings';
+$txt['permissionname_arcade_edit_settings_own'] = 'Own';
+$txt['permissionname_arcade_edit_settings_any'] = 'Any';
+
+// Simple permission gropus
+$txt['permissiongroup_simple_arcade'] = 'Use Arcade';
+$txt['permissiongroup_simple_arcade_moderate'] = 'Moderate Arcade';
+
+// Simple permission names
+$txt['permissionname_simple_arcade_comment_own'] = 'Edit their own comments';
+$txt['permissionname_simple_arcade_comment_any'] = 'Edit any comment';
+$txt['permissionname_simple_arcade_user_stats_own'] = 'View their own statistics';
+$txt['permissionname_simple_arcade_user_stats_any'] = 'View other people\'s statistics';
+$txt['permissionname_simple_arcade_edit_settings_own'] = 'Edit their own Arcade Settings';
+$txt['permissionname_simple_arcade_edit_settings_any'] = 'Edit other people\'s Arcade Settings';
+
+// Errors if they can't do something
+$txt['cannot_arcade_play'] = 'You are not allowed to play games!';
+$txt['cannot_arcade_view'] = 'You are not allowed to access arcade.';
+$txt['cannot_arcade_comment_own'] = 'You are not allowed to comment';
+$txt['cannot_arcade_user_stats_any'] = 'You are not allowed to view statistics of any user';
+$txt['cannot_arcade_user_stats_own'] = 'You are not allowed to view your statistics';
+
+// Who's online
+$txt['who_arcade'] = 'Viewing Arcade index';
+$txt['who_arcade_play'] = 'Playing <a href="' . $scripturl . '?action=arcade;sa=play;game=%d">%s</a> on Arcade';
+$txt['who_arcade_highscore'] = 'Viewing highscores of <a href="' . $scripturl . '?action=arcade;sa=play;game=%d">%s</a> on Arcade';
+
+// Help
+$txt['arcade_max_scores_help'] = 'Maximum scores that will be stored per member. (0 means unlimited)';
+$txt['arcade_membergroups_help'] = 'These groups will be allowed to play and view highscores. Others will not see this game, only used if permission mode will use game permissions.';
+// Arcade end
+]]></add>
+		</operation>
+	</file>
+</modification>

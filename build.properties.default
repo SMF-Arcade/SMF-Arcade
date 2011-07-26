@@ -1,0 +1,2 @@
+doc_output = ${user.home}/public_html/docs/${repository}/${branch}/
+build_output = ${user.home}/public_html/builds/${repository}/${branch}/

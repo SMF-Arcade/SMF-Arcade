@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="modification.xsl" type="text/xsl"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	ATTENTION: If you are trying to install this manually, you should try
+	the package manager.  If it will not work for you, please take a look
+	at the following for information on this format:
+		http://mods.simplemachines.org/docs/manual-install.php
+
+================================================================================
+
+	Modification files can be used to modify files so that they do what
+	your package needs them to do to work properly.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<!-- This information needs to be the same as that in the package-info.xml. -->
+	<id>Niko:Arcade</id>
+	<version>2.5</version>
+
+	<file name="$boarddir/index.php">
+		<operation>
+			<search position="after"><![CDATA[	elseif (empty($_REQUEST['action']))]]></search>
+			<add><![CDATA[	// Check for arcade actions
+	// IBPArcade v2.x.x Games support
+	elseif (isset($_REQUEST['act']) && strtolower($_REQUEST['act']) == 'arcade')
+	{
+		$_REQUEST['action'] = 'arcade';
+
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'newscore')
+			$_REQUEST['sa'] = 'ibpsubmit2';
+
+		require_once($sourcedir . '/Arcade.php');
+		return 'Arcade';
+	}
+	// IBPArcade v3.x.x Games support
+	elseif (isset($_REQUEST['autocom']) && $_REQUEST['autocom'] == 'arcade')
+	{
+		$_REQUEST['action'] = 'arcade';
+
+		if (isset($_REQUEST['do']) && $_REQUEST['do'] == 'savescore')
+			$_REQUEST['sa'] = 'ibpsubmit3';
+		elseif (isset($_REQUEST['do']) && $_REQUEST['do'] == 'verifyscore')
+			$_REQUEST['sa'] = 'ibpverify';
+
+		require_once($sourcedir . '/Arcade.php');
+		return 'Arcade';
+	}
+	elseif (isset($_REQUEST['play']) && !isset($_REQUEST['game']))
+	{
+		$_REQUEST['game'] = $_REQUEST['play'];
+		unset($_REQUEST['play']);
+		$_REQUEST['sa'] = 'play';
+
+		require_once($sourcedir . '/Arcade.php');
+		return 'Arcade';
+	}
+	elseif (isset($_REQUEST['highscore']) && !isset($_REQUEST['game']))
+	{
+		$_REQUEST['game'] = $_REQUEST['highscore'];
+		unset($_REQUEST['highscore']);
+		$_REQUEST['sa'] = 'highscore';
+
+		require_once($sourcedir . '/Arcade.php');
+		return 'Arcade';
+	}
+	elseif ((isset($_REQUEST['game']) || isset($_REQUEST['match'])) && !isset($_REQUEST['action']))
+	{
+		require_once($sourcedir . '/Arcade.php');
+		return 'Arcade';
+	}
+]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs-Db-mysql.php">
+		<operation>
+			<search position="after"><![CDATA[
+	if (!isset($matches[2]))]]></search>
+			<add><![CDATA[
+	if ($matches[1] === 'query_see_game')
+		return $user_info['query_see_game'];
+	elseif ($matches[1] === 'query_see_match')
+		return $user_info['query_see_match'];
+	elseif ($matches[1] === 'query_arena_game')
+		return $user_info['query_arena_game'];
+]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs-Db-sqlite.php">
+		<operation>
+			<search position="after"><![CDATA[
+	if (!isset($matches[2]))]]></search>
+			<add><![CDATA[
+	if ($matches[1] === 'query_see_game')
+		return $user_info['query_see_game'];
+	elseif ($matches[1] === 'query_see_match')
+		return $user_info['query_see_match'];
+	elseif ($matches[1] === 'query_arena_game')
+		return $user_info['query_arena_game'];
+]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Subs-Db-postgresql.php">
+		<operation>
+			<search position="after"><![CDATA[
+	if (!isset($matches[2]))]]></search>
+			<add><![CDATA[
+	if ($matches[1] === 'query_see_game')
+		return $user_info['query_see_game'];
+	elseif ($matches[1] === 'query_see_match')
+		return $user_info['query_see_match'];
+	elseif ($matches[1] === 'query_arena_game')
+		return $user_info['query_arena_game'];
+]]></add>
+		</operation>
+	</file>
+	
+	<file name="$sourcedir/Admin.php">
+		<operation>
+			<search position="before"><![CDATA[	$language_files = array(]]></search>
+			<add><![CDATA[
+	'ArcadeAdmin', ]]></add>
+		</operation>
+
+		<operation>
+			<search position="before"><![CDATA[	$include_files = array(]]></search>
+			<add><![CDATA[
+	'ArcadeAdmin', ]]></add>
+		</operation>
+
+		<operation>
+			<search position="before"><![CDATA[		array('ModifyCacheSettings', 'area=serversettings;sa=cache'),]]></search>
+			<add><![CDATA[		array('ArcadeAdminSettings', 'area=arcade;sa=settings'),
+		array('ArcadeAdminPemission', 'area=arcade;sa=permission'),]]></add>
+		</operation>
+	</file>
+
+	<file name="$sourcedir/Who.php">
+		<!-- Not hook because it would mean to use multiple queries to load games -->
+		<operation>
+			<search position="after"><![CDATA[		// Probably an error or some goon?]]></search>
+			<add><![CDATA[		elseif ($actions['action'] == 'arcade')
+		{
+
+			if (!isset($actions['sa']) || $actions['sa'] == 'list')
+				// Viewing index
+				$data[$k] = $txt['who_arcade'];
+			elseif ($actions['sa'] == 'play' && isset($actions['game']))
+				// Playing game
+				$game_ids[(int) $actions['game']][$k] = $txt['who_arcade_play'];
+			elseif ($actions['sa'] == 'highscore' && isset($actions['game']))
+				// Viewing highscores of game
+				$game_ids[(int) $actions['game']][$k] = $txt['who_arcade_highscore'];
+			else
+				// Something else, let's say it's index
+				$data[$k] = $txt['who_arcade'];
+
+		}
+]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[	// Load member names for the profile.]]></search>
+			<add><![CDATA[	if (!empty($game_ids) && allowedTo('view_arcade'))
+	{
+		$result = $smcFunc['db_query']('', '
+			SELECT id_game, game_name
+			FROM {db_prefix}arcade_games
+			WHERE id_game IN ({array_int:games})
+			LIMIT {int:limit}',
+			array(
+				'games' => array_keys($game_ids),
+				'limit' => count($game_ids)
+			));
+
+		while ($row = $smcFunc['db_fetch_assoc']($result))
+			foreach ($game_ids[$row['id_game']] as $k => $session_text)
+				$data[$k] = sprintf($session_text, $row['id_game'], $row['game_name']);
+	  $smcFunc['db_free_result']($result);
+	}
+]]></add>
+		</operation>
+	</file>
+
+
+	<file name="$sourcedir/Modlog.php">
+		<operation>
+			<search position="after"><![CDATA[	$messages = array();]]></search>
+			<add><![CDATA[	$games = array();
+]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[		// A message?]]></search>
+			<add><![CDATA[
+		// A game?
+		if (isset($row['extra']['game']))
+			$games[(int) $row['extra']['game']][] = $row['id_action'];
+]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[	if (!empty($messages))]]></search>
+			<add><![CDATA[	if (!empty($games))
+	{
+		$result = $smcFunc['db_query']('', '
+			SELECT id_game, game_name
+			FROM {db_prefix}arcade_games
+			WHERE id_game IN ({array_int:games})
+			LIMIT ' . count(array_keys($games)),
+			array(
+				'games' => array_keys($games),
+			)
+		);
+
+		while ($row = $smcFunc['db_fetch_assoc']($result))
+		{
+			foreach ($games[$row['id_game']] as $action)
+			{
+				$this_action = &$entries[$action];
+				$this_action['extra']['game'] = '<a href="' . $scripturl . '?action=arcade;game=' . $row['id_game'] . '">' . $row['game_name'] . '</a>';
+			}
+		}
+	  $smcFunc['db_free_result']($result);
+	}
+]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA['new_topic') as $type)]]></search>
+			<add><![CDATA['game', ]]></add>
+		</operation>
+	</file>
+
+</modification>

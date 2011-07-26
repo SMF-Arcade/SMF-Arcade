@@ -1,0 +1,173 @@
+/* ************************************* */
+/* styles from Arcade.template           */
+/* ************************************* */
+/* These are for the auto suggest floating div type thing. */
+.game_suggest
+{
+	border: 1px solid black;
+	position: absolute;
+	visibility: hidden;
+}
+
+/* An auto suggest item */
+.game_suggest_item
+{
+	background-color: #DDDDDD;
+}
+
+.game_suggest_item a
+{
+	color: black;
+	display: block;
+}
+
+/* hovered auto suggest item */
+.game_suggest_item a:hover
+{
+	background-color: #888888;
+	cursor: pointer;
+	color: #EEEEEE;
+	text-decoration: none;
+}
+
+/* ************************************* */
+/* styles from ArcadeList.template       */
+/* ************************************* */
+.game_table table
+{
+	width: 100%;
+}
+.game_table td.icon
+{
+	padding: 5px 7px;
+	width: 8%;
+}
+.game_table td.icon img
+{
+	width: 60px;
+}
+.game_table td.info
+{
+	vertical-align: top;
+}
+.game_table td.info h4
+{
+	padding: 0.4em 0.4em 0 0.4em;
+	margin: 0;
+}
+.game_table td.info h4 a
+{
+	float: left;
+}
+.game_table td.info h4 span
+{
+	float: right;
+}
+.game_table td.info p
+{
+	padding: 0 0.4em 0.5em 0.4em;
+	margin: 0;
+}
+.game_table td.info p span.game_left
+{
+	float: left;
+	text-align: left;
+}
+.game_table td.info p span.game_right
+{
+	float: right;
+	text-align: right;
+}
+.game_table td.score
+{
+	width: 15%;
+	text-align: center;
+	vertical-align: middle;
+}
+.game_table td.score2
+{
+	width: 30%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.roundframe ul
+{
+	padding: 0.5em;
+}
+
+/* ************************************* */
+/* styles from ArcadeGame.template       */
+/* ************************************* */
+#game_panel img.thumb
+{
+	width: 60px;
+	margin-left: 10px;
+}
+#game_panel div.scores
+{
+	margin-left: 10px;
+}
+#game_panel div.rating
+{
+	margin-right: 10px;
+}
+
+.score_table table
+{
+	width: 100%;
+}
+.score_table td
+{
+	padding: 0.5em;
+}
+
+#gamearea
+{
+	text-align: center;
+	padding: 0.5em 0.7em;
+}
+
+/* ************************************* */
+/* styles from ArcadeArena.template      */
+/* ************************************* */
+.arc_button
+{
+	padding: 5px;
+	margin: 5px;
+	text-decoration: none;
+}
+.arc_button:hover
+{
+	text-decoration: none;
+}
+.arc_button span
+{
+	padding-right: 10px;
+}
+
+table.playerlist
+{
+	width: 100%;
+}
+table.playerlist th.catbg3
+{
+	text-align: left;
+}
+table.playerlist td
+{
+	padding: 0.5em;
+}
+
+table.gameslist
+{
+	width: 100%;
+}
+table.gameslist th.catbg3
+{
+	text-align: left;
+}
+table.gameslist td
+{
+	padding: 0.5em;
+}

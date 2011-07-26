@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="SMF_Arcade" default="dist">
+	<property name="repository" value="smfarcade" override="true" />
+	<property name="branch" value="2.5" override="true" />
+    <property name="package" value="${phing.project.name}" override="true" />
+	<property name="version" value="2.5" override="yes" />
+	
+    <property name="builddir" value="./temp" override="true" />
+	<property name="docdir" value="./temp" override="true" />
+	
+	<property file="./build.properties.default" />
+	<property file="${user.home}/build/build.properties" override="true" />
+	<property file="./build.properties" override="true" />
+	
+    <target name="svnrev">
+        <echo msg="Reading SVN Last Revision..." />
+		
+		<svnlastrevision
+			svnpath="/usr/bin/svn"
+			workingcopy="."
+			propertyname="svn.lastrevision"  lastChanged="true" />
+		
+		<available file="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" property="already_build" />
+		
+		<fail if="already_build" message="Revision ${svn.lastrevision} Already build!" />
+    </target>
+
+    <target name="prepare">
+		<echo msg="Removing directory ${builddir}" />
+		<delete dir="${builddir}" />
+        
+		<echo msg="Making directory ${builddir}" />
+        <mkdir dir="${builddir}" />
+		
+		<echo msg="Making directory ${build_output}" />
+		<mkdir dir="${build_output}" />
+    </target>
+	
+    <target name="build" depends="prepare">
+		<copy todir="${builddir}/arcadeinstall" >
+			<fileset dir="./arcadeinstall/">
+				<include name="**" />
+			</fileset>
+		</copy>
+	
+		<copy todir="${builddir}/Games" >
+			<fileset dir="./Games/">
+				<include name="*.zip" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${builddir}/language" >
+			<fileset dir="./language/">
+				<include name="**" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${builddir}/Sources" >
+			<fileset dir="./Sources/">
+				<include name="**" />
+			</fileset>
+		</copy>
+
+		<copy todir="${builddir}/Themes" >
+			<fileset dir="./Themes/">
+				<include name="**" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${builddir}" >
+			<fileset dir="./">
+				<include name="*" />
+				<exclude name="build.*" />
+			</fileset>
+		</copy>	
+    </target>
+
+    <target name="dist" depends="build">
+        <echo msg="Creating archive..." />
+
+        <tar destfile="${build_output}/${package}-${version}.tar.gz" compression="gzip">
+            <fileset dir="${builddir}">
+                <include name="**" />
+            </fileset>
+        </tar>
+		
+		<delete dir="${builddir}" />
+    </target>
+	
+    <target name="svn" depends="svnrev,build">
+        <echo msg="Creating archive..." />
+
+        <tar destfile="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" compression="gzip">
+            <fileset dir="${builddir}">
+                <include name="**" />
+            </fileset>
+        </tar>
+		
+		<delete dir="${builddir}" />
+    </target>
+	
+    <target name="documentation" depends="build">
+		<delete dir="${doc_output}" />
+		<mkdir dir="${doc_output}" />
+		
+		<phpdoc title="API Documentation"
+			destdir="${doc_output}"
+			sourcecode="false"
+			output="HTML:Smarty:PHP">
+            <fileset dir="${builddir}">
+                <include name="**" />
+            </fileset>
+		</phpdoc>
+    </target>
+	
+	<target name="ftp-svn" depends="svn">
+		<ftpdeploy 
+			host="${ftp.host}" 
+			port="${ftp.port}"
+			username="${ftp.username}"
+			password="${ftp.password}"
+			dir="${ftp.dir}" 
+			mode="binary">
+			<fileset dir="${build_output}">
+				<include name="${package}-${version}-rev${svn.lastrevision}.tar.gz" />
+			</fileset>
+		</ftpdeploy>
+	</target>
+</project>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="modification.xsl" type="text/xsl"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+	ATTENTION: If you are trying to install this manually, you should try
+	the package manager.  If it will not work for you, please take a look
+	at the following for information on this format:
+		http://mods.simplemachines.org/docs/manual-install.php
+
+================================================================================
+
+	Modification files can be used to modify files so that they do what
+	your package needs them to do to work properly.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<!-- This information needs to be the same as that in the package-info.xml. -->
+	<id>Niko:Arcade</id>
+	<version>2.5</version>
+
+	<file name="$sourcedir/Subs-Editor.php">
+		<operation>
+			<search position="before"><![CDATA[	$searchTypes = array(]]></search>
+			<add><![CDATA[
+		'game' => 'Game',]]></add>
+		</operation>
+
+		<operation>
+			<search position="before"><![CDATA[	return $xml_data;
+}]]></search>
+			<add><![CDATA[
+
+// Search for a game - by gameName
+function AutoSuggest_Search_Game()
+{
+	global $sourcedir, $user_info, $txt, $smcFunc;
+
+	$_REQUEST['search'] = trim($smcFunc['strtolower']($_REQUEST['search'])) . '*';
+	$_REQUEST['search'] = strtr($_REQUEST['search'], array('%' => '\%', '_' => '\_', '*' => '%', '?' => '_', '&#038;' => '&amp;'));
+
+	require_once($sourcedir . '/Arcade.php');
+	arcadePermissionQuery();
+
+	// Find the Game
+	$request = $smcFunc['db_query']('', '
+		SELECT game.id_game, game.game_name
+		FROM {db_prefix}arcade_games AS game
+		WHERE {query_see_game}
+			AND NOT game.score_type = 2
+			AND game.game_name LIKE {string:search}
+		LIMIT ' . (strlen($_REQUEST['search']) <= 2 ? '100' : '800'),
+		array(
+			'buddy_list' => $user_info['buddies'],
+			'search' => $_REQUEST['search'],
+		)
+	);
+	$xml_data = array(
+		'games' => array(
+			'identifier' => 'member',
+			'children' => array(),
+		),
+	);
+	while ($row = $smcFunc['db_fetch_assoc']($request))
+	{
+		if (function_exists('iconv'))
+		{
+			$utf8 = iconv($txt['lang_character_set'], 'UTF-8', $row['game_name']);
+			if ($utf8)
+				$row['game_name'] = $utf8;
+		}
+
+		if (preg_match('~&#\d+;~', $row['game_name']) != 0)
+		{
+			$fixchar = create_function('$n', '
+				if ($n < 128)
+					return chr($n);
+				elseif ($n < 2048)
+					return chr(192 | $n >> 6) . chr(128 | $n & 63);
+				elseif ($n < 65536)
+					return chr(224 | $n >> 12) . chr(128 | $n >> 6 & 63) . chr(128 | $n & 63);
+				else
+					return chr(240 | $n >> 18) . chr(128 | $n >> 12 & 63) . chr(128 | $n >> 6 & 63) . chr(128 | $n & 63);');
+
+			$row['game_name'] = preg_replace('~&#(\d+);~e', '$fixchar(\'$1\')', $row['game_name']);
+		}
+
+		$row['game_name'] = strtr($row['game_name'], array('&amp;' => '&#038;', '&lt;' => '&#060;', '&gt;' => '&#062;', '&quot;' => '&#034;'));
+
+		$xml_data['games']['children'][] = array(
+			'attributes' => array(
+				'id' => $row['id_game'],
+			),
+			'value' => $row['game_name'],
+		);
+	}
+	$smcFunc['db_free_result']($request);
+
+	return $xml_data;
+}
+]]></add>
+		</operation>
+	</file>
+
+</modification>

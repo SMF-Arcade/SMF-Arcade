@@ -1,0 +1,395 @@
+Changes go downward, months go upward.  Please scroll to the bottom for a legend.
+Changelog started February 25, 2007.
+
+SMF Arcade 2.5                                                        xx.02.2011
+================================================================================
+February 2011
+--------------------------------------------------------------------------------
+ + SMF 2.0 RC5 Support
+ 
+August 2010
+--------------------------------------------------------------------------------
+ ! Show Admin menu for users that have arcade_admin permission [Issue #431]
+ 
+April 2010
+--------------------------------------------------------------------------------
+ ! If there was more scores than score limit saved, no new scores would be saved
+   [Issue #303]
+ 
+SMF Arcade 2.5 RC1 Public                                             29.11.2009
+================================================================================
+November 2009
+--------------------------------------------------------------------------------
+ + Support for submit system settings
+ ! Some v3 games requires gamedata directory in games diretory [Issue #294]
+
+SMF Arcade 2.5 RC1                                                    01.11.2009
+================================================================================
+October 2009
+--------------------------------------------------------------------------------
+ + Started support for curve theme
+ + Don't show submit systems that aren't installed
+ 
+August 2009
+--------------------------------------------------------------------------------
+ ! Uninstaller did uninstall wrong games [Issue #276]
+
+July 2009
+--------------------------------------------------------------------------------
+ ! Link to settings in emails was incorrect [Issue #268]
+ ! IBP v2 xml_play didn't return true causing plays not increase [Issue #185]
+ + Improved longest current champions query [Issue #165]
+ ! Fixed custom games (such as Minesweeper) not working
+ 
+June 2009
+--------------------------------------------------------------------------------
+ ! Cleaned up language files
+ ! Linktree missing some pages [Issue #264]
+ 
+SMF Arcade 2.5 Beta 6                                                 15.06.2009
+================================================================================
+June 2009
+--------------------------------------------------------------------------------
+ ! Unable to uninstall games
+ ! Added back support for filtering games in new games list [Issue #171]
+
+May 2009
+--------------------------------------------------------------------------------
+ + Show status on Arena match page
+ ! Play link didn't redirect to match page when user had played already
+ + Ability to change category of multiple games at the same time [Issue #205]
+ ! Details of old champion wasn't replaced in sent emails [Issue #238]
+ ! Edit games broken by ability to change category [Issue #240]
+ ! Use session_var instead of "sesc"
+ ! Don't include non-arena games in Arena dropdown [Issue #237]
+ + Updated for SMF 2.0 RC1-1 (package-info.xml)
+ + Log removed scores [Issue #106]
+ 
+March 2009
+--------------------------------------------------------------------------------
+ + Improved installer code
+
+SMF Arcade 2.5 Beta 5                                                 29.03.2009
+================================================================================
+March 2009
+--------------------------------------------------------------------------------
+ ! Scoring wasn't read from game-info due to wrong variable used
+ ! Ensure that ManageGames has games selected before queries, give error if not
+ + Added Arcade to core features
+ ! Don't show Arcade section on admin when disabled
+ ! Unable to extract gamepacks [Issue #229]
+ ! Upload should redirect to install games list [Issue #230]
+ + Try to delete gamedata folder when uninstalling [Issue #227]
+
+February 2009
+--------------------------------------------------------------------------------
+ ! Game suggest doesn't work with permissions enabled [Issue #203]
+ ! Links for other pages was wrong when browsing with category [Issue #204]
+ ! updateCategoryStats didn't update categories with no games
+ ! Sorting games on admin didn't work [Issue #208]
+ & Fixes to ArcadeEmail language
+
+January 2009
+--------------------------------------------------------------------------------
+ + Use Generic List for Manage Games
+ - Don't include downloadable games to game cache
+ + Split Manage Games to edit and install sections
+ ! Games were marked as installed even when install failed
+ + Recoded updateGameCache
+ + Improved database upgrade, it will make sure most things are correct
+
+December 2008
+--------------------------------------------------------------------------------
+ ! SMF 2.0 Beta 4 no longer supported
+
+SMF Arcade 2.5 Beta 3 Public                                          16.01.2009
+================================================================================
+December 2008
+--------------------------------------------------------------------------------
+ ! Admin settings search linked to wrong place
+ + Ability to filter games disabled games [Issue #171]
+ ! Editing disabled games wasn't possible
+
+SMF Arcade 2.5 Beta 3                                                 23.12.2008
+================================================================================
+December 2008
+--------------------------------------------------------------------------------
+ + Added descriptions for some pages
+ ! Edit category didn't work [Issue #164]
+ + Improved comment editing [Issue #168]
+
+November 2008
+--------------------------------------------------------------------------------
+ + Added phpBB activity games support back [Issue #92]
+ ! Games were detected some times to have missing files when it's not case
+ ! Add Game didn't work on new match without javascript or in case of there are problem with suggester
+ ! Ability to remove players without javascript
+ ! Ability to delete rounds without javascript
+ ! Try to get more memory for game cache update
+ ! Unable to save settings [Issue #161]
+
+SMF Arcade 2.5 Beta 2.2 Public                                        23.11.2008
+================================================================================
+November 2008
+--------------------------------------------------------------------------------
+ + Improved errors when score submit failed
+
+SMF Arcade 2.5 Beta 2.1                                               22.11.2008
+================================================================================
+November 2008
+--------------------------------------------------------------------------------
+ + Notifications are send as emails instead of PMs
+
+SMF Arcade 2.5 Beta 2                                                  6.11.2008
+================================================================================
+September 2008
+--------------------------------------------------------------------------------
+ ! Removed some unused code for SMF 1.1 support
+ ! Fixed uninstalling games deltree
+ + Updated to SMF 2.0 RC1
+ ! Some fixes for SQLite
+ + Updated latest version check to use service.smfarcade.info
+ + Reworked submit system code
+ + Log some actions
+ * Moved Profile templates to ArcadeProfile.template.php
+ ! Unable to edit Arcade Settings / View Stats if Arena disabled [SMF 2.0 RC1]
+ + Add Games when creating Match
+ ! Ability to add players without javascript when creating matches
+
+SMF Arcade 2.5 Beta 1.1                                               29.09.2008
+================================================================================
+September 2008
+--------------------------------------------------------------------------------
+ ! Fixed users statistics page
+ ! Adding members when creating match didn't work [Issue #78]
+ ! Fixed some arena issues [Issue #79, Issue #80]
+ ! Saving Advanced Settings broke extra_data [Issue #83]
+ ! Fix for Issue #89
+ ! Fixes to maintenance
+ ! Fixed Post based permissions doesn't work [Issue #90]
+ ! Fixes to updateGameCache function
+
+SMF Arcade 2.5 Beta 1                                                 08.09.2008
+================================================================================
+August 2008
+--------------------------------------------------------------------------------
+ ! Fix to installer
+ ! Fixes to Profile Statistics
+ ! Installer didn't work (Issue #45)
+ ! Fixed Database error when updating Game Cache in certain cases
+ ! Packed games were not shown on Installable filter
+ ! Unable to unpack games
+
+July 2008
+--------------------------------------------------------------------------------
+ ! XSS/Javascript injection on tags fixed
+
+June 2008
+--------------------------------------------------------------------------------
+ ! Invalid redirect after playing in Arena
+ ! Match in Arena wouldn't start if last player joins Match.
+ + Hide Thank you for playing after adding comment
+ ! Fixed commenting scores
+ ! Page index didn't work with favorites
+ + Highscore maintenance
+ + Support for v3Arcade games
+ ! Some submit systems not returning 'extra' data
+ + Rename eeks arcades tables
+ ! Unable to edit Advanced Settings of games
+ ! Fixed v3Arcade support
+ ! Don't send new champion notice if beating own score
+ ! Matches getting canceled if admin leaving
+ ! No link or invalid link for champion
+
+May 2008
+--------------------------------------------------------------------------------
+ + Ability to join and leave match
+ + General function to install games
+ ! Simplified game installing a bit
+ + Ability to change games and scores per page per user
+ ! Updated headers with functions
+ - Removed permission for rating & favorites
+ ! Fixed unclosed tag on installer
+ ! Fixes to game installer/uninstaller
+ + Ability to disable auto update of GameCache
+
+April 2008
+--------------------------------------------------------------------------------
+ ! Some session checks missing
+ + Events system, can choose when to recieve notification
+ ! XSS in match name
+ ! Don't allow match name to be just spaces
+ + Create default category for games
+
+March 2008
+--------------------------------------------------------------------------------
+ ! Missing database values to insert
+ + Use suggest control for Arena player select
+ ! Removed latest news box, moved version information
+ ! Removed SMF 1.1 Support
+ ! After uninstalling game without deleting files game had wrong status
+ ! Don't send invite to itself when making match in Arena
+ + Continued Arena-code
+ ! Games without category can be seen by anyone if category permission enabled
+ ! Simplified some code
+ + Ability to reorder categories
+ ! Some files were not removed
+
+February 2008
+--------------------------------------------------------------------------------
+ + Move gamedata directories of possible
+ ! Fixes for SMF 2.0 Beta 2 update
+ + Support for custom games (php)
+ + Minesweeper game
+ ! Fixed changing category
+ ! Help text wasn't shown when editing
+ ! Category editor didn't show all groups
+ ! Fixed Guest playing
+ ! Fixed permissions edits (install-de.xml, language.xml, Modifications.English.php)
+ ! Fixed uninstalling games
+ ! Fixed installing didn't save some data
+
+January 2008
+--------------------------------------------------------------------------------
+ + Updated to SMF 2.0 Beta 2
+   (SMF 1.1 support temporarily disabled)
+
+December 2007
+--------------------------------------------------------------------------------
+ + Select players to be Invited
+ ! (SMF 1.1) Don't show Challenge when there's no permission to create match or arena is disabled
+ + Added permission for Arcade Settings and Link to profile to edit settings
+ + Added tabs for filtering games by status
+ + (SMF 2.0) Search from Settings
+ ! Fixed ManagePermission edit
+ ! Unable to edit permissions of game even if enabled
+ + Popup for selecting game for Arena matches
+ ! Fixed database error when no players selected for match
+ + Don't show groups that cannot access Arcade for per game permissions
+
+November 2007
+--------------------------------------------------------------------------------
+ + Arena can be disabled
+ + Profile edits for SMF 1.1.x added
+ ! Subject wasn't escaped when sending new champion PM
+ + Hashing for v2 games (Other/smfarcade.as)
+ * Template for creating new match (ArcadeArena.template.php)
+ ! Fixed edits for ManagePermissions.php
+
+October 2007
+--------------------------------------------------------------------------------
+ + Edit Game (rewritten)
+ ! Database results was not freed on some places
+ + Game list on admin paged and can be filtered by status
+ + Possibilty to move each game to own directory on install
+ ! Post from last day calculated wrongly
+
+September 2007
+--------------------------------------------------------------------------------
+ ! Code cleanup, bug fixes (didn't remember to add to changelog)
+ ! Subs-Game.php merged back to, Subs-Arcade.php
+ ! Subs-ArcadeAdmin.php contains now admin functions
+ ! Possible to use loadArcade even if arcade is disabled
+ + Basic info center to Arcade list
+ + Install shows errors if installing game failed
+ + Updated package info for 1.1.4
+
+August 2007
+--------------------------------------------------------------------------------
+ ! Code cleanup, bug fixes (didn't remember to add to changelog)
+
+July 2007
+--------------------------------------------------------------------------------
+ ! Some code cleaned on ManageGames.php
+ ! Fixes to game installer
+ ! Javascript fixed
+ ! More fixes to game installer
+ ! Missing $scripturl on call to constructPageIndex
+ ! Users were unable to play games (ArcadeLegacy.php)
+
+June 2007
+--------------------------------------------------------------------------------
+ ! Index renaming caused errors, if column in index was renamed
+ ! Fixed install.xml
+ + Added xml-stylesheets from Daniel15
+ + Admin Arcade gives permissions to play all games
+ ! In some cases users could play games which are not enabled
+ + GamesFilesList function to get list of all games from Games directory
+ + and several helper (is_game, readgameinfo)
+ + Basic game listing to ManageGames
+ + New table added to database (arcade_game_info)
+ ! Fix for older PHP versions
+ ! Fixed install for 1.1.x
+ - Removed getID3
+ + Own SWF Reader (swfinfo -class)
+ + Game files are now cached to database
+ + Added arcade_files table to installer
+ & New strings for actions on manage games list
+ * New manage game list template
+ ! Manage Game list shows games which are installed but main file missing
+
+May 2007
+--------------------------------------------------------------------------------
+ + Security fix
+ + Better cheater blocking
+ + Play functions for IBPv2, v3, SMF v2
+
+April 2007
+--------------------------------------------------------------------------------
+ + SMF v2 submit rewritten
+ + IBP v2, v3 rewritten
+ + IBP v32 Support
+ ! Fixed score save for guests
+ ! Error on highscore page for non admins when category permission enabled
+ ! Bug fix on ArcadeXMLOutput (default value for second parameter)
+ - Removed ArcadeGameInfo, BuildGameArray
+ + loadGame, GetGameInfo
+ + Subs-Game.php for Game functions
+
+March 2007
+--------------------------------------------------------------------------------
+ ! Two undefined indexes
+ ! Optimized PostPermissionCheck
+ + Admin may force post permission check by adding ;pcheck to url
+ ! Scores table was not updated if beating chapmion own chapmion score
+ + XML Output function
+ * Removed XML Functions from template
+ ! Fixed typo in changelog ;)
+ & Internal error string added
+ ! Cleaned up query code (ArcadeList.php)
+ ! Two database errors fixed (ArcadeList.php)
+ ! Changed rest XML template usages to use XML Output
+ + Message and Errors support in XML
+ ! Javascript bugs
+ ! Quick search fixed
+ + SWF Object updated to 1.5
+ ! Moved Tests under other directory
+ + Some changes to javascript
+ ! Personal best was replaced by lower score (Subs-Arcade.php)
+ + "Have you tried these?" (ArcadePlay.php, Subs-Arcade.php)
+ ! Wrong score for champion (ArcadeList.php)
+ ! ArcadePlay renamed to ArcadeGame
+ + Submit system rewriting started
+ + SMF legacy rewritten (no IPBv2/v3)
+
+February 2007
+--------------------------------------------------------------------------------
+ + Changelog finally started
+ ! Page index on scores page showed only one page
+ ! Databse error when new personal best score
+ ! Build.php caused error on build (same variable name)
+ + Post per day -> Post in last 24 hours and added Average posts
+ + Caching of post per day data
+ ! If met post per day requirement, you could play even if you had no permission
+   (possibly, not tested)
+ + Game editor should no longer show per game permission if it's not enabled
+ ! arcadePostsPerDay changed to arcadePostLastDay
+ ! two undefined indexes
+
+Legend:
+--------------------------------------------------------------------------------
+ ! Minor change or bugfix. (don't bother to log typos except between releases.)
+ * Change like above, but affects templates.
+ & Change that affects a language file. (make two if it affects templates too.)
+ + Feature addition or improvement.
+ - Feature or option removal.
