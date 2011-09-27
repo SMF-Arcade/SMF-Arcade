@@ -16,6 +16,9 @@ if (!defined('SMF'))
 
 function ArcadeIBPGetGame()
 {
+	if (empty($_POST['gname']))
+		$_POST['gname'] = false;
+		
 	return getGameInfo($_POST['gname']);
 }
 
@@ -148,6 +151,9 @@ function ArcadeIBP3XMLPlay(&$game, &$session)
 // v3.2
 function ArcadeIBP32GetGame()
 {
+	if (empty($_POST['gname']))
+		$_POST['gname'] = false;
+		
 	return getGameInfo($_POST['gname']);
 }
 
