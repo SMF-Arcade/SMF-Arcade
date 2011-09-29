@@ -70,6 +70,7 @@
 		<require-file name="Themes/default/images/favorite.gif" destination="$imagesdir" />
 		<require-file name="Themes/default/images/favorite2.gif" destination="$imagesdir" />
 		<require-file name="Themes/default/images/gold.gif" destination="$imagesdir" />
+		<require-file name="Themes/default/images/admin/feature_arcade.png" destination="$themes_dir/default/images/admin" />
 
 		<!-- These files goes to Main directory -->
 		<require-file name="arcade.php" destination="$boarddir" />
