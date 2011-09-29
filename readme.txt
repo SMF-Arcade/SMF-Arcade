@@ -14,7 +14,7 @@ Thank you!
 SMF Arcade adds Arcade section to your forum where users can play games.
 
 [color=blue][b][size=12pt]Supported SMF Versions[/size][/b][/color]
-This version supports only SMF 2.0.
+This version supports SMF 2.0 and SMF 2.0.1.
 
 [color=blue][b][size=12pt]Features[/size][/b][/color]
 [list]
