@@ -8,12 +8,13 @@
 	
     <property name="builddir" value="./temp" override="true" />
 	<property name="docdir" value="./temp" override="true" />
+	<property name="outdir" value="./dist" override="true" />
 	
 	<property file="./build.properties.default" />
 	<property file="${user.home}/build/build.properties" override="true" />
 	<property file="./build.properties" override="true" />
 	
-    <target name="svnrev">
+    <!--<target name="svnrev">
         <echo msg="Reading SVN Last Revision..." />
 		
 		<svnlastrevision
@@ -24,7 +25,7 @@
 		<available file="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" property="already_build" />
 		
 		<fail if="already_build" message="Revision ${svn.lastrevision} Already build!" />
-    </target>
+    </target>-->
 
     <target name="prepare">
 		<echo msg="Removing directory ${builddir}" />
@@ -33,8 +34,8 @@
 		<echo msg="Making directory ${builddir}" />
         <mkdir dir="${builddir}" />
 		
-		<echo msg="Making directory ${build_output}" />
-		<mkdir dir="${build_output}" />
+		<echo msg="Making directory ${outdir}" />
+		<mkdir dir="${outdir}" />
     </target>
 	
     <target name="build" depends="prepare">
@@ -43,13 +44,7 @@
 				<include name="**" />
 			</fileset>
 		</copy>
-	
-		<copy todir="${builddir}/Games" >
-			<fileset dir="./Games/">
-				<include name="*.zip" />
-			</fileset>
-		</copy>
-		
+
 		<copy todir="${builddir}/language" >
 			<fileset dir="./language/">
 				<include name="**" />
@@ -72,6 +67,10 @@
 			<fileset dir="./">
 				<include name="*" />
 				<exclude name="build.*" />
+				<exclude name=".*" />
+				<exclude name="temp" />
+				<exclude name="dist" />
+				<exclude name="*.komodo*" />
 			</fileset>
 		</copy>	
     </target>
@@ -79,7 +78,7 @@
     <target name="dist" depends="build">
         <echo msg="Creating archive..." />
 
-        <tar destfile="${build_output}/${package}-${version}.tar.gz" compression="gzip">
+        <tar destfile="${outdir}/${package}-${version}.tar.gz" compression="gzip">
             <fileset dir="${builddir}">
                 <include name="**" />
             </fileset>
@@ -88,7 +87,7 @@
 		<delete dir="${builddir}" />
     </target>
 	
-    <target name="svn" depends="svnrev,build">
+    <!--<target name="svn" depends="svnrev,build">
         <echo msg="Creating archive..." />
 
         <tar destfile="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" compression="gzip">
@@ -98,7 +97,7 @@
         </tar>
 		
 		<delete dir="${builddir}" />
-    </target>
+    </target>-->
 	
     <target name="documentation" depends="build">
 		<delete dir="${doc_output}" />
@@ -114,7 +113,7 @@
 		</phpdoc>
     </target>
 	
-	<target name="ftp-svn" depends="svn">
+	<!--<target name="ftp-svn" depends="svn">
 		<ftpdeploy 
 			host="${ftp.host}" 
 			port="${ftp.port}"
@@ -126,5 +125,5 @@
 				<include name="${package}-${version}-rev${svn.lastrevision}.tar.gz" />
 			</fileset>
 		</ftpdeploy>
-	</target>
+	</target>-->
 </project>
