@@ -1,12 +1,12 @@
 Changes go downward, months go upward.  Please scroll to the bottom for a legend.
 Changelog started February 25, 2007.
 
-SMF Arcade 2.5                                                        xx.02.2011
+SMF Arcade 2.5 RC2                                                    xx.10.2011
 ================================================================================
-February 2011
+October 2011
 --------------------------------------------------------------------------------
- + SMF 2.0 RC5 Support
- 
+ + SMF 2.0.1 Support
+
 August 2010
 --------------------------------------------------------------------------------
  ! Show Admin menu for users that have arcade_admin permission [Issue #431]
