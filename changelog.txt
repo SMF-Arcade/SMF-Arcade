@@ -1,7 +1,7 @@
 Changes go downward, months go upward.  Please scroll to the bottom for a legend.
 Changelog started February 25, 2007.
 
-SMF Arcade 2.5 RC2                                                    xx.10.2011
+SMF Arcade 2.5 RC2                                                    08.10.2011
 ================================================================================
 October 2011
 --------------------------------------------------------------------------------
