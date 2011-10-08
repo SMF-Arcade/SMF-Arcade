@@ -4,7 +4,7 @@
 	<property name="repository" value="smfarcade" override="true" />
 	<property name="branch" value="2.5" override="true" />
     <property name="package" value="${phing.project.name}" override="true" />
-	<property name="version" value="2.5" override="yes" />
+	<property name="version" value="2.5 RC2" override="yes" />
 	
     <property name="builddir" value="./temp" override="true" />
 	<property name="docdir" value="./temp" override="true" />

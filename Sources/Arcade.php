@@ -129,7 +129,7 @@ function loadArcade($mode = 'normal', $index = '')
 	if (!empty($arcade_version))
 		return;
 
-	$arcade_version = '2.5';
+	$arcade_version = '2.5 RC2';
 	$arcade_lang_version = '2.5';
 
 	$context['arcade'] = array();

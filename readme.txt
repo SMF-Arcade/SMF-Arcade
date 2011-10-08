@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]SMF Arcade 2.5[/b][/size][/color]
+[center][color=red][size=16pt][b]SMF Arcade 2.5 RC2[/b][/size][/color]
 [/center]
 [hr]
 [center][url=http://www.smfarcade.info]Official website[/url] | [url=http://www.simplemachines.org/community/index.php?topic=29619.0]Support Topic[/url] | [url=http://www.smfarcade.info/forum/index.php?project=1]Issue Tracker[/url][/center]
