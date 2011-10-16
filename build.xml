@@ -3,37 +3,15 @@
 <project name="SMF_Arcade" default="dist">
 	<property name="repository" value="smfarcade" override="true" />
 	<property name="branch" value="trunk" override="true" />
-    <property name="package" value="${phing.project.name}" override="true" />
+	<property name="package" value="${phing.project.name}" override="true" />
 	<property name="version" value="2.6_Alpha" override="yes" />
 	
-    <property name="builddir" value="./temp" override="true" />
+    <property name="outdir" value="./dist" override="true" />
 	<property name="docdir" value="./temp" override="true" />
 	
-	<property file="./build.properties.default" />
-	<property file="${user.home}/build/build.properties" override="true" />
-	<property file="./build.properties" override="true" />
-	
-    <target name="svnrev">
-        <echo msg="Reading SVN Last Revision..." />
-		
-		<svnlastrevision
-			svnpath="/usr/bin/svn"
-			workingcopy="."
-			propertyname="svn.lastrevision" lastChanged="true" />
-		
-		<available file="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" property="already_build" />
-		
-		<fail if="already_build" message="Revision ${svn.lastrevision} Already build!" />
-    </target>
-
     <target name="prepare">
-		<echo msg="Removing directory ${builddir}" />
 		<delete dir="${builddir}" />
-        
-		<echo msg="Making directory ${builddir}" />
-        <mkdir dir="${builddir}" />
-		
-		<echo msg="Making directory ${build_output}" />
+        <mkdir dir="${outdir}" />
 		<mkdir dir="${build_output}" />
     </target>
 	
@@ -88,10 +66,10 @@
 		<delete dir="${builddir}" />
     </target>
 	
-    <target name="svn" depends="svnrev,build">
+    <target name="git" depends="build">
         <echo msg="Creating archive..." />
 
-        <tar destfile="${build_output}/${package}-${version}-rev${svn.lastrevision}.tar.gz" compression="gzip">
+        <tar destfile="${outdir}/${package}-${version}-${githash}.tar.gz" compression="gzip">
             <fileset dir="${builddir}">
                 <include name="**" />
             </fileset>
@@ -113,18 +91,4 @@
             </fileset>
 		</phpdoc>
     </target>
-	
-	<target name="ftp-svn" depends="svn">
-		<ftpdeploy 
-			host="${ftp.host}" 
-			port="${ftp.port}"
-			username="${ftp.username}"
-			password="${ftp.password}"
-			dir="${ftp.dir}" 
-			mode="binary">
-			<fileset dir="${build_output}">
-				<include name="${package}-${version}-rev${svn.lastrevision}.tar.gz" />
-			</fileset>
-		</ftpdeploy>
-	</target>
 </project>
