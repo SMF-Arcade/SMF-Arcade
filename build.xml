@@ -22,11 +22,11 @@
 			</fileset>
 		</copy>
 	
-		<copy todir="${builddir}/Games" >
+		<!--<copy todir="${builddir}/Games" >
 			<fileset dir="./Games/">
 				<include name="*.zip" />
 			</fileset>
-		</copy>
+		</copy>-->
 		
 		<copy todir="${builddir}/language" >
 			<fileset dir="./language/">
