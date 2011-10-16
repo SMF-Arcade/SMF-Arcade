@@ -6,11 +6,11 @@
 	<property name="package" value="${phing.project.name}" override="true" />
 	<property name="version" value="2.6_Alpha" override="yes" />
 	
-	<property name="builddir" value="./temp" override="true" />
-    <property name="outdir" value="./dist" override="true" />
-	<property name="docdir" value="./temp" override="true" />
+	<property name="builddir" value="./temp" />
+	<property name="outdir" value="./dist" />
+	<property name="docdir" value="./temp" />
 	
-    <target name="prepare">
+	<target name="prepare">
 		<delete dir="${builddir}" />
 		<mkdir dir="${builddir}" />
         <mkdir dir="${outdir}" />
