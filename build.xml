@@ -6,13 +6,14 @@
 	<property name="package" value="${phing.project.name}" override="true" />
 	<property name="version" value="2.6_Alpha" override="yes" />
 	
+	<property name="builddir" value="./temp" override="true" />
     <property name="outdir" value="./dist" override="true" />
 	<property name="docdir" value="./temp" override="true" />
 	
     <target name="prepare">
 		<delete dir="${builddir}" />
+		<mkdir dir="${builddir}" />
         <mkdir dir="${outdir}" />
-		<mkdir dir="${build_output}" />
     </target>
 	
     <target name="build" depends="prepare">
@@ -21,12 +22,6 @@
 				<include name="**" />
 			</fileset>
 		</copy>
-	
-		<!--<copy todir="${builddir}/Games" >
-			<fileset dir="./Games/">
-				<include name="*.zip" />
-			</fileset>
-		</copy>-->
 		
 		<copy todir="${builddir}/language" >
 			<fileset dir="./language/">
