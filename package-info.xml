@@ -70,7 +70,7 @@
 		<require-file name="Themes/default/images/favorite.gif" destination="$imagesdir" />
 		<require-file name="Themes/default/images/favorite2.gif" destination="$imagesdir" />
 		<require-file name="Themes/default/images/gold.gif" destination="$imagesdir" />
-		<require-file name="Themes/default/images/admin/feature_arcade.png" destination="$themes_dir/default/images/admin" />
+		<require-file name="Themes/default/images/admin/feature_arcade.png" destination="$imagesdir/admin" />
 
 		<!-- These files goes to Main directory -->
 		<require-file name="arcade.php" destination="$boarddir" />
@@ -78,7 +78,6 @@
 
 		<!-- Create Games directory -->
 		<create-dir name="Games" destination="$boarddir" />
-		<require-file name="Games/minesweeper.zip" destination="$boarddir/Games" />
 
 		<!-- Run Installer/upgrader -->
 		<code>arcadeinstall/Database.php</code>
@@ -146,6 +145,7 @@
 		<remove-file name="$imagesdir/favorite2.gif" />
 		<remove-file name="$imagesdir/star2.gif" />
 		<remove-file name="$imagesdir/gold.gif" />
+		<remove-file name="$imagesdir/admin/feature_arcade.png" />
 
 		<!-- Remove these files from main directroy -->
 		<remove-file name="$boarddir/arcade.php" />
