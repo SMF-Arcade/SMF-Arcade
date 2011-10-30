@@ -132,6 +132,33 @@ class SMFArcade
 	/**
 	 *
 	 */
+	static public function autoload($class_name)
+	{
+		global $sourcedir;
+		
+		if (substr($class_name, 0, 6) == 'Arcade')
+		{
+			$class_file = str_replace('_', '/', $class_name);
+			
+			if (file_exists($sourcedir . '/' . $class_file) && is_dir($sourcedir . '/' . $class_file))
+			{				
+				$class_file .= substr($class_file, strrpos($class_file, '/'));
+				require_once($sourcedir . '/' . $class_file . '.php');
+			}
+			elseif (file_exists($sourcedir . '/' . $class_file . '.php'))
+				require_once($sourcedir . '/' . $class_file . '.php');
+			else
+				return false;
+				
+			return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 *
+	 */
 	public static function loadArcade($mode = 'normal', $index = '')
 	{
 		global $db_prefix, $scripturl, $txt, $modSettings, $context, $settings, $sourcedir, $user_info;
@@ -141,6 +168,9 @@ class SMFArcade
 	
 		if (!empty($loaded))
 			return;
+		
+		spl_autoload_register(array('SMFArcade', 'autoload'));
+		
 		$loaded = true;
 		
 		$context['arcade'] = array();
@@ -164,8 +194,11 @@ class SMFArcade
 			$context['games_per_page'] = !empty($user_info['arcade_settings']['gamesPerPage']) ? $user_info['arcade_settings']['gamesPerPage'] : $modSettings['gamesPerPage'];
 			$context['scores_per_page'] = !empty($user_info['arcade_settings']['scoresPerPage']) ? $user_info['arcade_settings']['scoresPerPage'] : $modSettings['scoresPerPage'];
 	
+			if (!empty($modSettings['arcadeSkipJquery']))
+				$context['html_headers'] .= '<script language="JavaScript" type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/arcade/jquery.js"></script>';
+		
 			// Arcade javascript
-			$context['html_headers'] .= '<script language="JavaScript" type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/arcade.js"></script>';
+			$context['html_headers'] .= '<script language="JavaScript" type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/arcade/main.js"></script>';
 	
 			// Add Arcade to link tree
 			$context['linktree'][] = array(
