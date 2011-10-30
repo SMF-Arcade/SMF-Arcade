@@ -253,11 +253,11 @@ $tables = array(
 				'type' => 'primary',
 				'columns' => array('id_game')
 			),
-			array(
+			/*array(
 				'name' => 'internal_name',
 				'type' => 'unique',
 				'columns' => array('internal_name')
-			),
+			),*/
 		),
 		// Data for upgrade to drop extra columns/indexes
 		'upgrade' => array(
