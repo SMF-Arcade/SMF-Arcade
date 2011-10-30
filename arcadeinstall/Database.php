@@ -128,18 +128,28 @@ $tables = array(
 				'auto' => true
 			),
 			array(
-				'name' => 'internal_name',
-				'type' => 'varchar',
-				'default' => '',
-				'size' => 255,
-			),
-			array(
 				'name' => 'game_name',
 				'type' => 'varchar',
 				'default' => '',
 				'size' => 255,
 			),
 			array(
+				'name' => 'class',
+				'type' => 'varchar',
+				'default' => '',
+				'size' => 50,
+			),			
+			array(
+				'name' => 'game_settings',
+				'type' => 'text',
+			),
+			/*array(
+				'name' => 'internal_name',
+				'type' => 'varchar',
+				'default' => '',
+				'size' => 255,
+			),*/
+			/*array(
 				'name' => 'game_file',
 				'type' => 'varchar',
 				'default' => '',
@@ -150,7 +160,7 @@ $tables = array(
 				'type' => 'varchar',
 				'default' => '',
 				'size' => 255,
-			),
+			),*/
 			array(
 				'name' => 'description',
 				'type' => 'text',
@@ -170,12 +180,6 @@ $tables = array(
 				'type' => 'varchar',
 				'default' => '',
 				'size' => 255,
-			),
-			array(
-				'name' => 'submit_system',
-				'type' => 'varchar',
-				'default' => '',
-				'size' => 15,
 			),
 			array(
 				'name' => 'id_cat',
@@ -224,10 +228,6 @@ $tables = array(
 				'type' => 'int',
 				'default' => 0,
 				'unsigned' => true,
-			),
-			array(
-				'name' => 'extra_data',
-				'type' => 'text',
 			),
 			array(
 				'name' => 'num_plays',
