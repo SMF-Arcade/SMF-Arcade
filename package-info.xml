@@ -60,7 +60,7 @@
 		<require-file name="Themes/default/css/arcade.css" destination="$themedir/css" />
 	
 		<!-- These images goes to Default Theme scripts directory -->
-		<require-dir name="Themes/default/scripts/Arcade" destination="$themedir/scripts" />
+		<require-dir name="Themes/default/scripts/arcade" destination="$themedir/scripts" />
 		<require-file name="Themes/default/scripts/swfobject.js" destination="$themedir/scripts" />
 
 		<!-- These images goes to Default Theme images directory -->

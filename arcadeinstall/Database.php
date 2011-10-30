@@ -128,6 +128,12 @@ $tables = array(
 				'auto' => true
 			),
 			array(
+				'name' => 'internal_name',
+				'type' => 'varchar',
+				'default' => '',
+				'size' => 255,
+			),
+			array(
 				'name' => 'game_name',
 				'type' => 'varchar',
 				'default' => '',
@@ -143,12 +149,6 @@ $tables = array(
 				'name' => 'game_settings',
 				'type' => 'text',
 			),
-			/*array(
-				'name' => 'internal_name',
-				'type' => 'varchar',
-				'default' => '',
-				'size' => 255,
-			),*/
 			/*array(
 				'name' => 'game_file',
 				'type' => 'varchar',
@@ -253,20 +253,15 @@ $tables = array(
 				'type' => 'primary',
 				'columns' => array('id_game')
 			),
-			/*array(
+			array(
 				'name' => 'internal_name',
 				'type' => 'unique',
 				'columns' => array('internal_name')
-			),*/
+			),
 		),
 		// Data for upgrade to drop extra columns/indexes
 		'upgrade' => array(
 			'indexes' => array(
-				/*array(
-					'name' => 'internal_name',
-					'type' => 'unique',
-					'columns' => array('internal_name'),
-				),*/
 				array(
 					'name' => 'game_file',
 					'type' => 'unique',

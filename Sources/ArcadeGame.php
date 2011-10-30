@@ -110,27 +110,41 @@ function ArcadePlay()
 	if (!$context['game'] = getGameInfo(isset($_REQUEST['random']) ? 'random' : $_REQUEST['game']))
 		fatal_lang_error('arcade_game_not_found', false);
 
-	$system = SubmitSystemInfo($context['game']['submit_system']);
-	require_once($sourcedir . '/' . $system['file']);
+	//$system = SubmitSystemInfo($context['game']['submit_system']);
+	//require_once($sourcedir . '/' . $system['file']);
+	//$isCustomGame = $context['game']['submit_system'] == 'custom_game';
 	
-	$isCustomGame = $context['game']['submit_system'] == 'custom_game';
+	if (!isset($_SESSION['arcade_play_' . $context['game']['id']]) || isset($_REQUEST['restart']))
+		$_SESSION['arcade_play_' . $context['game']['id']] = array('data' => array());
 
-	if (!isset($_REQUEST['xml']) && !isset($_REQUEST['ajax']))
+	$context['game_class'] = new $context['game']['class']($context['game'], $_SESSION['arcade_play_' . $context['game']['id']]['data']);
+	
+	if (!$context['game_class'] instanceof Arcade_Game)
+		fatal_lang_error('arcade_game_not_found', false);
+		
+	// Layout start
+	loadTemplate('ArcadeGame');
+	$context['template_layers'][] = 'arcade_game';
+	$context['sub_template'] = 'arcade_game_play';
+	$context['page_title'] = sprintf($txt['arcade_game_play'], $context['game']['name']);
+		
+	$context['game_class']->Prepare();
+	
+	$_SESSION['arcade_play_' . $context['game']['id']]['data'] = $context['game_class']->getSession();
+	
+	return;
+
+	/*if (!isset($_REQUEST['xml']) && !isset($_REQUEST['ajax']))
 	{
-		if (!isset($_SESSION['arcade_play_' . $context['game']['id']]) || !$isCustomGame || isset($_REQUEST['restart']))
-			$_SESSION['arcade_play_' . $context['game']['id']] = array();
+		
 
-		$system['play']($context['game'], $_SESSION['arcade_play_' . $context['game']['id']]);
+		//$system['play']($context['game'], $_SESSION['arcade_play_' . $context['game']['id']]);
 
-		$_SESSION['arcade_play_extra_' . $context['game']['id']] = $extra;
+		//$_SESSION['arcade_play_extra_' . $context['game']['id']] = $extra;
 
-		$context['game']['html'] = $system['html'];
+		//$context['game']['html'] = $system['html'];
 
-		// Layout start
-		loadTemplate('ArcadeGame');
-		$context['template_layers'][] = 'arcade_game';
-		$context['sub_template'] = 'arcade_game_play';
-		$context['page_title'] = sprintf($txt['arcade_game_play'], $context['game']['name']);
+		
 
 		$context['arcade']['play'] = true;
 
@@ -140,14 +154,6 @@ function ArcadePlay()
 		);
 
 		return;
-	}
-	elseif ($isCustomGame)
-	{
-		$ok = $system['xml_play']($context['game'], $_SESSION['arcade_play_' . $context['game']['id']]);
-	
-		$context['game']['class']->showAjax();
-
-		obExit(false);
 	}
 	else
 	{
@@ -170,7 +176,7 @@ function ArcadePlay()
 			);
 
 		ArcadeXMLOutput(array('check' => '1'), null);
-	}
+	}*/
 
 	fatal_error('Hacking attempt...');
 }

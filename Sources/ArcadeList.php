@@ -130,8 +130,7 @@ function ArcadeList()
 	$request = $smcFunc['db_query']('', '
 		SELECT
 			game.id_game, game.game_name, game.description, game.game_rating, game.num_plays,
-			game.score_type, game.thumbnail, game_directory,
-			game.thumbnail_small, game.help,
+			game.score_type, game.thumbnail, game.thumbnail_small, game.help,
 			IFNULL(mem.id_member, 0) AS id_member, IFNULL(score.id_score, 0) AS id_score,
 			IFNULL(score.score, 0) AS champ_score, IFNULL(mem.real_name, score.player_name) AS real_name,
 			IFNULL(score.end_time, 0) AS champion_time, IFNULL(category.id_cat, 0) AS id_cat,

@@ -143,15 +143,14 @@ function template_arcade_game_play()
 	<div class="pagesection">
 		<div class="align_left">', !empty($modSettings['topbottomEnable']) ? '<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
 		', template_button_strip($context['arcade']['buttons'], 'right'), '
-	</div>
-	<div class="windowbg2">
-		<span class="topslice"><span></span></span>
-		<div id="gamearea">
+	</div>';
+	
+	$context['game_class']->Render();
+	
+	/*
 			', $context['game']['html']($context['game'], true), '
 			', !$context['arcade']['can_submit'] ? '<br /><strong>' . $txt['arcade_cannot_save'] . '</strong>' : '', '
-		</div>
-		<span class="botslice"><span></span></span>
-	</div>';
+		';*/
 
 }
 

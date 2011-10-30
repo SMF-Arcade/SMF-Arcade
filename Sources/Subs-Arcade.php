@@ -571,10 +571,8 @@ function loadGame($id_game, $from_admin = false)
 			AND game.internal_name = {string:game}";
 
 	$result = $smcFunc['db_query']('', '
-		SELECT game.id_game, game.game_name, game.description, game.game_rating, game.num_plays,
-			game.game_file, game.game_directory, game.submit_system, game.internal_name,
-			game.score_type, game.thumbnail, game.thumbnail_small,
-			game.help, game.enabled, game.member_groups, game.extra_data,
+		SELECT game.id_game, game.internal_name, game.game_name, game.description, game.game_rating, game.num_plays, game.class, game.game_settings,
+			game.score_type, game.thumbnail, game.thumbnail_small, game.help, game.enabled, game.member_groups,
 			IFNULL(score.id_score,0) AS id_score, IFNULL(score.score, 0) AS champ_score,
 			IFNULL(mem.id_member, 0) AS id_member, IFNULL(mem.real_name, score.player_name) AS real_name,
 			IFNULL(score.end_time, 0) AS champion_time, IFNULL(favorite.id_favorite, 0) AS is_favorite,
@@ -623,11 +621,11 @@ function getGameInfo($id_game = 0, $raw = false)
 	$game = &$context['arcade']['game_data'][$id_game];
 
 	// Is game installed in subdirectory
-	if ($game['game_directory'] != '')
+	/*if ($game['game_directory'] != '')
 		$gameurl = $modSettings['gamesUrl'] . '/' . $game['game_directory'] . '/';
 	// It is in main directory
 	else
-		$gameurl = $modSettings['gamesUrl'] . '/';
+		$gameurl = $modSettings['gamesUrl'] . '/';*/
 
 	$description = parse_bbc($game['description']);
 	$help = parse_bbc($game['help']);
@@ -647,9 +645,7 @@ function getGameInfo($id_game = 0, $raw = false)
 		'id' => $game['id_game'],
 		'url' => array(
 			'play' => $scripturl . '?action=arcade;sa=play;game=' . $game['id_game'],
-			'base_url' => $gameurl,
 			'highscore' => $scripturl . '?action=arcade;sa=highscore;game=' . $game['id_game'],
-			'flash' => $gameurl . $game['game_file'],
 			'favorite' => $context['arcade']['can_favorite'] ? $game['is_favorite'] == 0 ? $scripturl . '?action=arcade;sa=favorite;game=' . $game['id_game'] : $scripturl . '?action=arcade;sa=favorite;remove;game=' . $game['id_game'] : '#',
 		),
 		'extra_data' => !empty($game['extra_data']) ? unserialize($game['extra_data']) : array(),
@@ -658,11 +654,9 @@ function getGameInfo($id_game = 0, $raw = false)
 			'name' => $game['cat_name'],
 			'link' => $scripturl . '?action=arcade;category=' . $game['id_cat'],
 		),
-		'submit_system' => $game['submit_system'],
 		'internal_name' => $game['internal_name'],
 		'name' => $game['game_name'],
-		'directory' => $game['game_directory'],
-		'file' => $game['game_file'],
+		'class' => $game['class'],
 		'description' => $description,
 		'help' =>  $help,
 		'rating' => $game['game_rating'],

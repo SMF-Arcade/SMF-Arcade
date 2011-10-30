@@ -138,7 +138,7 @@ function Arcade_profile_areas(&$profile_areas)
 
 function Arcade_menu_buttons(&$menu_buttons)
 {
-	global $context, $modSettings, $scripturl;
+	global $context, $modSettings, $scripturl, $txt;
 	
 	if (!$context['allow_admin'])
 		$context['allow_admin'] = allowedTo('arcade_admin');
@@ -161,7 +161,7 @@ function Arcade_menu_buttons(&$menu_buttons)
 
 function Arcade_admin_areas(&$admin_areas)
 {
-	global $context, $modSettings, $scripturl;
+	global $context, $modSettings, $scripturl, $txt;
 	
 	arcade_array_insert($admin_areas, 'members',
 		array(
