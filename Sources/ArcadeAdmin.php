@@ -73,7 +73,7 @@ function ArcadeAdminSettings($return_config = false)
 	global $scripturl, $txt, $modSettings, $context, $settings, $sourcedir;
 	
 	if ($return_config)
-		require_once($sourcedir . '/Subs-ArcadeAdmin.php');
+		require_once($sourcedir . '/Subs-Arcade.php');
 	else
 		$context[$context['admin_menu_name']]['tab_data']['description'] = $txt['arcade_settings_desc'];
 
