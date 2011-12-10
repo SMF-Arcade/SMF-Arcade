@@ -78,7 +78,7 @@
 		<require-file name="newscore.php" destination="$boarddir" />
 
 		<!-- Create Games directory -->
-		<create-dir name="Games" destination="$boarddir" />
+		<require-dir name="Games" destination="$boarddir" />
 
 		<!-- Run Installer/upgrader -->
 		<code>arcadeinstall/Database.php</code>
