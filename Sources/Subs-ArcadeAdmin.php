@@ -440,7 +440,7 @@ function installGames($games, $move_games = false)
 				if (!file_exists($from) && file_exists($to))
 					continue;
 
-				if (!rename($from, $to))
+				if (!copy($from, $to))
 				{
 					$moveFail = true;
 
@@ -448,6 +448,8 @@ function installGames($games, $move_games = false)
 
 					continue;
 				}
+				
+				@unlink($from);
 			}
 
 			if (!$moveFail)
