@@ -35,7 +35,8 @@ function template_arcade_list()
 
 
 	// Header for Game listing
-	echo '	
+	echo '
+		<a id="top"></a>
 		<div class="pagesection">
 			<div class="align_left">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
 			', template_button_strip($arcade_buttons, 'right'), '
@@ -216,7 +217,8 @@ function template_arcade_list()
 				</p>
 			</div>
 		</div></div>
-		<span class="lowerframe"><span></span></span>';
+		<span class="lowerframe"><span></span></span>
+		<a id="bot"></a> ';
 	}
 }
 
