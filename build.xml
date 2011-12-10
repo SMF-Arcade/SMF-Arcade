@@ -39,6 +39,12 @@
 				<include name="**" />
 			</fileset>
 		</copy>
+		
+		<copy todir="${builddir}/Games" >
+			<fileset dir="./Games/">
+				<include name="**" />
+			</fileset>
+		</copy>
 
 		<copy todir="${builddir}/Themes" >
 			<fileset dir="./Themes/">

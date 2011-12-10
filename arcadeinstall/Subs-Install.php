@@ -21,7 +21,7 @@ function doTables($tables, $columnRename = array())
 	{
 		$table_name = $table['name'];
 
-		$tableExists = in_array($db_prefix . $table_name, $existingTables);
+		$tableExists = in_array(strtolower($db_prefix . $table_name), $existingTables);
 
 		// Create table
 		if (!$tableExists && empty($table['smf']))
