@@ -132,6 +132,14 @@ function ArcadePlay()
 	
 	$_SESSION['arcade_play_' . $context['game']['id']]['data'] = $context['game_class']->getSession();
 	
+	// Arcade javascript
+	$context['html_headers'] .= '
+	<script language="JavaScript" type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/arcade/game.js"></script>
+	<script>
+		var currentGame = new SMFArcade_game(' . $context['game']['id'] . ');
+	</script>';
+	
+	
 	return;
 
 	/*if (!isset($_REQUEST['xml']) && !isset($_REQUEST['ajax']))
