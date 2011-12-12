@@ -923,8 +923,6 @@ function gameCacheInsertGames($games, $return = false)
 				
 				while ($fileFrom = readdir($dir))
 				{
-					//if (in_array($fileFrom, $moveFiles))
-					//	continue;
 					if ($fileFrom == '.' || $fileFrom == '..')
 						continue;
 					
