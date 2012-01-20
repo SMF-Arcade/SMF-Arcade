@@ -29,9 +29,9 @@ function arcade_array_insert(&$input, $key, $insert, $where = 'before', $strict 
 		$input = array_merge($insert, $input);
 	else
 		$input = array_merge(
-			array_slice($input, 0, $position, true),
+			array_slice($input, 0, $position),
 			$insert,
-			array_slice($input, $position, null, true)
+			array_slice($input, $position)
 		);
 }
 	
@@ -138,10 +138,7 @@ function Arcade_profile_areas(&$profile_areas)
 
 function Arcade_menu_buttons(&$menu_buttons)
 {
-	global $context, $modSettings, $scripturl, $txt;
-	
-	if (!$context['allow_admin'])
-		$context['allow_admin'] = allowedTo('arcade_admin');
+	global $context, $modSettings, $scripturl, $txt;	
 	
 	$context['allow_arcade'] = allowedTo('arcade_view') && !empty($modSettings['arcadeEnabled']);
 	
