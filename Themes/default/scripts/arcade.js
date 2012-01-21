@@ -153,9 +153,9 @@ function onArcadeCommentSave(XMLDoc)
 {
 	editing = false;
 
-	var divComment = "comment" + parseInt(score);
-	var divEdit = "edit" + parseInt(score);
-	var editLink = "editlink" + parseInt(score);
+	var divComment = "comment" + parseInt(editscore);
+	var divEdit = "edit" + parseInt(editscore);
+	var editLink = "editlink" + parseInt(editscore);
 
 	setInnerHTML(document.getElementById(divComment), XMLDoc.getElementsByTagName("comment")[0].firstChild.nodeValue);
 	document.getElementById(divComment).style.display = 'block';
