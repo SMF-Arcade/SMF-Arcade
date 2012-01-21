@@ -73,6 +73,9 @@ function ArcadeIBPXMLPlay(&$game, &$session)
 // v3
 function ArcadeIBP3GetGame()
 {
+	if (empty($_SESSION['arcade']['ibp_game']))
+		return false;
+	
 	return getGameInfo($_SESSION['arcade']['ibp_game']);
 }
 
