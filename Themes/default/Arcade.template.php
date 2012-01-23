@@ -17,7 +17,7 @@ function template_arcade_above()
 	<div class="cat_bar">
 		<h3 class="catbg">
 			<span class="floatleft">', $context['arcade_tabs']['title'], '</span>
-			<img id="arcade_toggle" class="floatright" src="', $settings['images_url'], '/collapse.gif', '" alt="*" title="', $txt['upshrink_description'], '" align="bottom" style="margin: 0 1ex; display: none;" />
+			<img id="arcade_toggle" class="floatright" src="', $settings['images_url'], '/collapse.gif', '" alt="*" title="', $txt['upshrink_description'], '" align="bottom" style="margin: 10px 5px 0 1em; display: none;" />
 		</h3>
 	</div>
 	<div id="arcade_panel" class="plainbox"', empty($options['arcade_panel_collapse']) ? '' : ' style="display: none;"', '>';

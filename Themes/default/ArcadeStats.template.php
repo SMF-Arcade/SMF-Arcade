@@ -12,11 +12,10 @@ function template_arcade_statistics()
 	global $scripturl, $txt, $context, $settings;
 
 	echo '
-	<div class="cat_bar">
-		<h3 class="catbg">
-			<img src="', $settings['images_url'], '/gold.gif" alt="" />
-		', $txt['arcade_stats'], '
-		</h3>
+	<div id="statistics" class="main_section">
+		<div class="cat_bar">
+			<h3 class="catbg">', $txt['arcade_stats'], '</h3>
+		</div>
 	</div>';
 	
 	$alternate = false;
@@ -25,11 +24,12 @@ function template_arcade_statistics()
 	if (!empty($context['arcade']['statistics']['play']) > 0)
 	{
 		echo '
-	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 48%;">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />
-				', $txt['arcade_most_played'], '
+	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 49.5%;">
+		<div class="title_bar">
+			<h3 class="titlebg">
+				<span class="ie6_header floatleft">
+					<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />', $txt['arcade_most_played'], '
+				</span>
 			</h3>
 		</div>
 		<div class="windowbg2">
@@ -59,7 +59,7 @@ function template_arcade_statistics()
 
 		echo '
 				</dl>
-				<div class="clear"></div>
+				<br class="clear" />
 			</div>
 			<span class="botslice"><span></span></span>
 		</div>
@@ -76,12 +76,13 @@ function template_arcade_statistics()
 	if (!empty($context['arcade']['statistics']['active']))
 	{
 		echo '
-	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 48%;">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />
-				', $txt['arcade_most_active'], '
-			</h3>
+	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 49.5%;">
+		<div class="title_bar">
+			<h4 class="titlebg">
+				<span class="ie6_header floatleft">
+					<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />', $txt['arcade_most_active'], '
+				</span>
+			</h4>
 		</div>
 		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
@@ -110,7 +111,7 @@ function template_arcade_statistics()
 
 		echo '
 				</dl>
-				<div class="clear"></div>
+				<br class="clear" />
 			</div>
 			<span class="botslice"><span></span></span>
 		</div>
@@ -128,12 +129,13 @@ function template_arcade_statistics()
 	if (!empty($context['arcade']['statistics']['rating']))
 	{
 		echo '
-	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 48%;">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />
-				', $txt['arcade_best_games'], '
-			</h3>
+	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 49.5%;">
+		<div class="title_bar">
+			<h4 class="titlebg">
+				<span class="ie6_header floatleft">
+					<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />', $txt['arcade_best_games'], '
+				</span>
+			</h4>
 		</div>
 		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
@@ -161,7 +163,7 @@ function template_arcade_statistics()
 
 		echo '
 				</dl>
-				<div class="clear"></div>
+				<br class="clear" />
 			</div>
 			<span class="botslice"><span></span></span>
 		</div>
@@ -178,12 +180,13 @@ function template_arcade_statistics()
 	if (!empty($context['arcade']['statistics']['champions']))
 	{
 		echo '
-	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 48%;">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />
-				', $txt['arcade_best_players'], '
-			</h3>
+	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 49.5%;">
+		<div class="title_bar">
+			<h4 class="titlebg">
+				<span class="ie6_header floatleft">
+					<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />', $txt['arcade_best_players'], '
+				</span>
+			</h4>
 		</div>
 		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
@@ -211,7 +214,7 @@ function template_arcade_statistics()
 
 		echo '
 				</dl>
-				<div class="clear"></div>
+				<br class="clear" />
 			</div>
 			<span class="botslice"><span></span></span>
 		</div>
@@ -227,12 +230,13 @@ function template_arcade_statistics()
 	if (!empty($context['arcade']['statistics']['longest']))
 	{
 		echo '
-	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 48%;">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />
-				', $txt['arcade_longest_champions'], '
-			</h3>
+	<div class="', !$alternate ? 'floatleft' : 'floatright', '" style="width: 49.5%;">
+		<div class="title_bar">
+			<h4 class="titlebg">
+				<span class="ie6_header floatleft">
+					<img src="', $settings['images_url'], '/gold.gif" class="icon" alt="" />', $txt['arcade_longest_champions'], '
+				</span>
+			</h4>
 		</div>
 		<div class="windowbg2">
 			<span class="topslice"><span></span></span>
@@ -260,7 +264,7 @@ function template_arcade_statistics()
 
 		echo '
 				</dl>
-				<div class="clear"></div>
+				<br class="clear" />
 			</div>
 			<span class="botslice"><span></span></span>
 		</div>
@@ -270,12 +274,12 @@ function template_arcade_statistics()
 		
 		if (!$alternate)
 			echo '
-		<div class="clear"></div>';
+		<br class="clear" />';
 	}
 	
 	if ($alternate)
 			echo '
-		<div class="clear"></div>';
+		<br class="clear" />';
 }
 
 ?>

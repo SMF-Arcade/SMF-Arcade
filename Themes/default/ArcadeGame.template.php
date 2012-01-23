@@ -72,7 +72,7 @@ function template_arcade_game_above()
 	<div class="cat_bar">
 		<h3 class="catbg">
 			<span class="floatleft">', $context['game']['name'], '</span>
-			<img id="game_toggle" class="floatright" src="', $settings['images_url'], '/collapse.gif', '" alt="*" title="', $txt['upshrink_description'], '" align="bottom" style="margin: 0 1ex; display: none;" />
+			<img id="game_toggle" class="floatright" src="', $settings['images_url'], '/collapse.gif', '" alt="*" title="', $txt['upshrink_description'], '" align="bottom" style="margin: 10px 5px 0 1em; display: none;" />
 		</h3>
 	</div>
 	<div id="game_panel" class="windowbg2" style="', empty($options['game_panel_collapse']) ? '' : ' display: none;', '">
@@ -141,7 +141,7 @@ function template_arcade_game_play()
 
 	echo '
 	<div class="pagesection">
-		<div class="align_left">', !empty($modSettings['topbottomEnable']) ? '<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
+		<div class="pagelinks floatleft">', !empty($modSettings['topbottomEnable']) ? '<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
 		', template_button_strip($context['arcade']['buttons'], 'right'), '
 	</div>
 	<div class="windowbg2">
@@ -239,10 +239,6 @@ function template_arcade_game_highscore()
 	}
 
 	echo '
-	<div class="pagesection">
-		<div class="align_left">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
-		', template_button_strip($context['arcade']['buttons'], 'right'), '
-	</div>
 	<form name="score" action="', $scripturl, '?action=arcade;sa=highscore" method="post">
 		<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
 		<input type="hidden" name="game" value="', $context['game']['id'], '" />
@@ -250,6 +246,10 @@ function template_arcade_game_highscore()
 			<h3 class="catbg">
 				', $txt['arcade_highscores'], '
 			</h3>
+		</div>
+		<div class="pagesection">
+			<div class="pagelinks floatleft">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
+			', template_button_strip($context['arcade']['buttons'], 'right'), '
 		</div>
 		<div class="score_table">
 			<table cellspacing="0" class="table_grid">
@@ -334,7 +334,7 @@ function template_arcade_game_highscore()
 	{
 		echo '
 			<tfoot>
-				<tr>
+				<tr class="titlebg">
 					<td colspan="', $context['arcade']['can_admin_arcade'] ? '6' : '5', '" align="right">
 						<select name="qaction">
 							<option value="">--------</option>
@@ -359,7 +359,7 @@ function template_arcade_game_below()
 
 	echo '
 	<div class="pagesection">
-		<div class="align_left">';
+		<div class="pagelinks floatleft">';
 		
 	if (isset($context['page_index']))
 		echo $txt['pages'], ': ', $context['page_index'];
