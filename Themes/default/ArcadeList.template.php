@@ -38,7 +38,7 @@ function template_arcade_list()
 	echo '
 		<a id="top"></a>
 		<div class="pagesection">
-			<div class="align_left">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
+			<div class="pagelinks floatleft">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['go_down'] . '</b></a>' : '', '</div>
 			', template_button_strip($arcade_buttons, 'right'), '
 		</div>
 		<div class="game_table">
@@ -149,8 +149,8 @@ function template_arcade_list()
 				</tbody>
 			</table>
 		</div>
-		<div class="pagesection">
-			<div class="align_left">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#top"><b>' . $txt['go_up'] . '</b></a>' : '', '</div>
+		<div class="pagesection" style="margin-bottom: 1em">
+			<div class="pagelinks">', $txt['pages'], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#top"><b>' . $txt['go_up'] . '</b></a>' : '', '</div>
 			', template_button_strip($arcade_buttons, 'right'), '
 		</div>';
 
@@ -167,9 +167,13 @@ function template_arcade_list()
 				</h3>
 			</div>
 			<div id="upshrinkHeaderArcadeIC"', empty($options['collapse_header_arcade_ic']) ? '' : ' style="display: none;"', '>
-				<h4 class="titlebg"><span class="left"></span>
-					<span>', $txt['arcade_latest_scores'], '</span>
-				</h4>';
+				<div class="title_barIC">
+					<h4 class="titlebg">
+						<span class="ie6_header floatleft"> 
+						', $txt['arcade_latest_scores'], '
+						</span>
+					</h4>
+				</div>';
 
 		if (!empty($context['arcade']['latest_scores']))
 		{
@@ -189,9 +193,13 @@ function template_arcade_list()
 				<p>', $txt['arcade_no_scores'], '</p>';
 
 		echo '
-				<h4 class="titlebg clear"><span class="left"></span>
-					<span>', $txt['arcade_game_highlights'], '</span>
-				</h4>
+				<div class="title_barIC">
+					<h4 class="titlebg">
+						<span class="ie6_header floatleft">
+						', $txt['arcade_game_highlights'], '
+						</span>
+					</h4>
+				</div>
 				<p>
 		';
 
@@ -209,16 +217,20 @@ function template_arcade_list()
 
 		echo '
 				</p>
-				<h4 class="titlebg"><span class="left"></span>
-					<span>', $txt['arcade_users'], '</span>
-				</h4>
-				<p>
+				<div class="title_barIC">
+					<h4 class="titlebg">
+						<span class="ie6_header floatleft">
+						', $txt['arcade_users'], '
+						</span>
+					</h4>
+				</div>
+				<p class="inline" style="padding: 0.5em">
 					', implode(', ', $context['arcade_viewing']), '
 				</p>
 			</div>
 		</div></div>
 		<span class="lowerframe"><span></span></span>
-		<a id="bot"></a> ';
+		<a id="bot"></a>';
 	}
 }
 
