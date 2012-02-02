@@ -22,7 +22,7 @@
 	<version>2.6 Alpha</version>
 	<type>modification</type>
 
-	<install for="2.0, 2.0.1">
+	<install for="2.0 - 2.99.99">
 		<readme parsebbc="true">readme.txt</readme>
 
 		<!-- These files goes to Sources directory -->
