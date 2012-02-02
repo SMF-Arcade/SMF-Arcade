@@ -27,12 +27,10 @@ function arcade_array_insert(&$input, $key, $insert, $where = 'before', $strict 
 	// Insert as first
 	if ($position === 0)
 		$input = array_merge($insert, $input);
-	else
-		$input = array_merge(
-			array_slice($input, 0, $position, true),
-			$insert,
-			array_slice($input, $position, null, true)
-		);
+	elseif (phpversion() >= '5.0.2')
+		$input = array_merge(array_slice($input, 0, $position, true), $insert, array_slice($input, $position, null, true));
+	else	
+		$input = array_merge(array_slice($input, 0, $position), $insert, array_slice($input, $position, null));
 }
 	
 function Arcade_actions(&$actionArray)
