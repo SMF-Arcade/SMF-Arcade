@@ -183,7 +183,7 @@ function createGame($game)
 			'id_cat' => 'int',
 			'internal_name' => 'string',
 			'game_name' => 'string',
-			'submit_system' => 'string',
+			'class' => 'string',
 			'description' => 'string',
 			'help' => 'string',
 			'enabled' => 'int',
@@ -191,13 +191,13 @@ function createGame($game)
 			'num_plays' => 'int',
 			'game_file' => 'string',
 			'game_directory' => 'string',
-			'extra_data' => 'string',
+			'game_settings' => 'string',
 		),
 		array(
 			0,
 			$game['internal_name'],
 			$game['name'],
-			$game['submit_system'],
+			$game['class'],
 			'',
 			'',
 			1,
@@ -215,7 +215,7 @@ function createGame($game)
 	if (empty($id_game))
 		return false;
 		
-	unset($game['internal_name'], $game['name'], $game['submit_system'], $game['game_file'], $game['game_directory']);
+	unset($game['internal_name'], $game['name'], $game['class'], $game['game_file'], $game['game_directory']);
 
 	// Update does rest
 	updateGame($id_game, $game);
@@ -434,14 +434,14 @@ function installGames($games, $move_games = false)
 			if (isset($gameinfo['flash']))
 			{
 				if (!empty($gameinfo['flash']['width']) && is_numeric($gameinfo['flash']['width']))
-					$game['extra_data']['width'] = (int) $gameinfo['flash']['width'];
+					$game['game_settings']['width'] = (int) $gameinfo['flash']['width'];
 				if (!empty($gameinfo['flash']['height']) && is_numeric($gameinfo['flash']['height']))
-					$game['extra_data']['height'] = (int) $gameinfo['flash']['height'];
+					$game['game_settings']['height'] = (int) $gameinfo['flash']['height'];
 				if (!empty($gameinfo['flash']['version']) && is_numeric($gameinfo['flash']['version']))
-					$game['extra_data']['flash_version'] = (int) $gameinfo['flash']['version'];
+					$game['game_settings']['flash_version'] = (int) $gameinfo['flash']['version'];
 				if (!empty($gameinfo['flash']['bgcolor']) && strlen($gameinfo['flash']['bgcolor']) == 6)
 				{
-					$game['extra_data']['background_color'] = array(
+					$game['game_settings']['background_color'] = array(
 						hexdec(substr($gameinfo['flash']['bgcolor'], 0, 2)),
 						hexdec(substr($gameinfo['flash']['bgcolor'], 2, 2)),
 						hexdec(substr($gameinfo['flash']['bgcolor'], 4, 2))
@@ -457,7 +457,7 @@ function installGames($games, $move_games = false)
 				// Add missing values
 				if (!$swf->error)
 				{
-					$game['extra_data'] += array(
+					$game['game_settings'] += array(
 						'width' => $swf->header['width'],
 						'height' => $swf->header['height'],
 						'flash_version' => $swf->header['version'],
@@ -473,11 +473,11 @@ function installGames($games, $move_games = false)
 		if (empty($row['class']))
 		{
 			if (isset($gameinfo))
-				$row['submit_system'] = $gameinfo['submit'];
-			elseif (substr($row['game_file'], -3) == 'php')
-				$row['submit_system'] = 'custom_game';
+				$row['class'] = $gameinfo['submit'];
+			//elseif (substr($row['game_file'], -3) == 'php')
+			//	$row['class'] = 'Arcade_Game_[]';
 			elseif (substr($row['game_file'], -3) == 'xap')
-				$row['submit_system'] = 'silver';
+				$row['class'] = 'Arcade_Game_silver';
 			elseif (file_exists($boarddir . '/arcade/gamedata/' . $internal_name . '/v32game.txt'))
 				$row['class'] = 'Arcade_Game_ibp32';
 			elseif (file_exists($boarddir . '/arcade/gamedata/' . $internal_name . '/v3game.txt'))
@@ -496,7 +496,7 @@ function installGames($games, $move_games = false)
 				unset($file);
 			}
 			else
-				$row['submit_system'] = 'Arcade_Game_v1game';
+				$row['class'] = 'Arcade_Game_v1game';
 		}
 		$game['class'] = $row['class'];
 		$game['score_type'] = isset($gameinfo) && isset($gameinfo['scoring']) ? (int) $gameinfo['scoring'] : 0;
@@ -589,9 +589,9 @@ function installGames($games, $move_games = false)
 			'help' => !empty($game['help']) ? $game['help'] : '',
 			'game_file' => $game['file'],
 			'game_directory' => $game_directory,
-			'submit_system' => $game['submit_system'],
+			'class' => $game['class'],
 			'score_type' => $game['score_type'],
-			'extra_data' => $game['extra_data'],
+			'game_settings' => $game['game_settings'],
 		);
 
 		$success = false;

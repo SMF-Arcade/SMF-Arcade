@@ -841,10 +841,10 @@ function updateGame($id_game, $gameOptions, $log = false)
 		$updateValues['game_directory'] = $gameOptions['game_directory'];
 	}
 
-	if (isset($gameOptions['submit_system']))
+	if (isset($gameOptions['class']))
 	{
-		$gameUpdates[] = "submit_system = {string:submit_system}";
-		$updateValues['submit_system'] = $gameOptions['submit_system'];
+		$gameUpdates[] = "class = {string:class}";
+		$updateValues['class'] = $gameOptions['class'];
 	}
 
 	if (isset($gameOptions['member_groups']))
@@ -853,10 +853,10 @@ function updateGame($id_game, $gameOptions, $log = false)
 		$updateValues['member_groups'] = implode(',', $gameOptions['member_groups']);
 	}
 
-	if (isset($gameOptions['extra_data']))
+	if (isset($gameOptions['game_settings']))
 	{
-		$gameUpdates[] = "extra_data = {string:extra_data}";
-		$updateValues['extra_data'] = serialize($gameOptions['extra_data']);
+		$gameUpdates[] = "game_settings = {string:game_settings}";
+		$updateValues['game_settings'] = serialize($gameOptions['game_settings']);
 	}
 
 	if (isset($gameOptions['score_type']))
