@@ -25,6 +25,7 @@ abstract class Arcade_Game
 	public function __construct(array $game, $session)
 	{
 		$this->game = $game;
+		
 		if (!empty($session))
 			$this->setSession($session);
 	}

@@ -414,12 +414,15 @@ function installGames($games, $move_games = false)
 		$game = array(
 			'id_file' => $row['id_file'],
 			'name' => $row['game_name'],
+			'class' => '',
 			'directory' => $row['game_directory'],
 			'file' => $row['game_file'],
 			'internal_name' => $internal_name,
 			'thumbnail' => isset($thumbnail[0]) ? $thumbnail[0] : '',
 			'thumbnail_small' => isset($thumbnailSmall[0]) ? $thumbnailSmall[0] : '',
-			'extra_data' => array(),
+			'game_settings' => array(
+				
+			),
 		);
 
 		unset($thumbnail, $thumbnailSmall);
@@ -427,6 +430,7 @@ function installGames($games, $move_games = false)
 		// Get information from flash
 		if (substr($row['game_file'], -3) == 'swf')
 		{
+			
 			if (isset($gameinfo['flash']))
 			{
 				if (!empty($gameinfo['flash']['width']) && is_numeric($gameinfo['flash']['width']))
@@ -466,7 +470,7 @@ function installGames($games, $move_games = false)
 		}
 
 		// Detect submit system
-		if (empty($row['submit_system']))
+		if (empty($row['class']))
 		{
 			if (isset($gameinfo))
 				$row['submit_system'] = $gameinfo['submit'];
@@ -475,26 +479,26 @@ function installGames($games, $move_games = false)
 			elseif (substr($row['game_file'], -3) == 'xap')
 				$row['submit_system'] = 'silver';
 			elseif (file_exists($boarddir . '/arcade/gamedata/' . $internal_name . '/v32game.txt'))
-				$row['submit_system'] = 'ibp32';
+				$row['class'] = 'Arcade_Game_ibp32';
 			elseif (file_exists($boarddir . '/arcade/gamedata/' . $internal_name . '/v3game.txt'))
-				$row['submit_system'] = 'ibp3';
+				$row['class'] = 'Arcade_Game_ibp3';
 			elseif (file_exists($directory . '/' . $internal_name . '.ini'))
-				$row['submit_system'] = 'pnflash';
+				$row['class'] = 'Arcade_Game_pnflash';
 			elseif (file_exists($directory . '/' . $internal_name . '.php'))
 			{
 				$file = file_get_contents($directory . '/' . $internal_name . '.php');
 
 				if (strpos($file, '$config = array(') !== false)
-					$row['submit_system'] = 'ibp';
+					$row['class'] = 'Arcade_Game_ibp';
 				else
-					$row['submit_system'] = 'v1game';
+					$row['class'] = 'Arcade_Game_v1game';
 
 				unset($file);
 			}
 			else
-				$row['submit_system'] = 'v1game';
+				$row['submit_system'] = 'Arcade_Game_v1game';
 		}
-		$game['submit_system'] = $row['submit_system'];
+		$game['class'] = $row['class'];
 		$game['score_type'] = isset($gameinfo) && isset($gameinfo['scoring']) ? (int) $gameinfo['scoring'] : 0;
 
 		if (!empty($gameinfo['thumbnail']))
@@ -552,13 +556,13 @@ function installGames($games, $move_games = false)
 			}
 		}		
 
-		if(@file_exists($modSettings['gamesDirectory'] . '/' .$game_directory . '/game-info.xml'))
+		if (@file_exists($modSettings['gamesDirectory'] . '/' .$game_directory . '/game-info.xml'))
 		{
 			$gameinfo = readGameInfo($modSettings['gamesDirectory'] . '/' .$game_directory . '/game-info.xml');
 			$game['description'] = !empty($gameinfo['description']) ? $gameinfo['description'] : false;	
 		}
 
-		if(empty($game['description']) && @file_exists($modSettings['gamesDirectory'] . '/' .$game_directory .'/'.$game['internal_name'].'.php'))
+		if (empty($game['description']) && @file_exists($modSettings['gamesDirectory'] . '/' .$game_directory .'/'.$game['internal_name'].'.php'))
 		{
 			@require_once($modSettings['gamesDirectory'] . '/' .$game_directory.'/'.$game['internal_name'].'.php');
 			$game_info = array('gtitle', 'gwords', 'gkeys');

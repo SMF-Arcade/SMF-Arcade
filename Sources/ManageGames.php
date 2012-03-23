@@ -566,11 +566,11 @@ function EditGame()
 			'submit_system' => $game['submit_system'],
 			'score_type' => $game['score_type'],
 			'member_groups' => explode(',', $game['member_groups']),
-			'extra_data' => unserialize($game['extra_data']),
+			'game_settings' => unserialize($game['game_settings']),
 			'enabled' => !empty($game['enabled']),
 		);
 
-		if (!is_array($context['game']['extra_data']) || isset($_REQUEST['detect']))
+		/*if (!is_array($context['game']['game_settings']) || isset($_REQUEST['detect']))
 		{
 			require_once($sourcedir . '/SWFReader.php');
 			$swf = new SWFReader();
@@ -597,7 +597,7 @@ function EditGame()
 					'background_color' => array('', '', ''),
 				);
 			}
-		}
+		}*/
 	}
 
 	if ($context['game_permissions'])

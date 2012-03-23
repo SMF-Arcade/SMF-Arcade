@@ -95,6 +95,7 @@ $columnRename = array(
 	'ID_CHAMPION_SCORE' => 'id_champion_score',
 	'gameExtraData' => 'extra_data',
     'game_extra_data' => 'extra_data',
+	// 'extra_data' => 'game_settings',
 	'numPlays' => 'num_plays',
 	'numRates' => 'num_rates',
 	'maxScores' => 'max_scores',
@@ -149,7 +150,7 @@ $tables = array(
 				'name' => 'game_settings',
 				'type' => 'text',
 			),
-			/*array(
+			array(
 				'name' => 'game_file',
 				'type' => 'varchar',
 				'default' => '',
@@ -160,7 +161,7 @@ $tables = array(
 				'type' => 'varchar',
 				'default' => '',
 				'size' => 255,
-			),*/
+			),
 			array(
 				'name' => 'description',
 				'type' => 'text',

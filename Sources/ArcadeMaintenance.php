@@ -115,7 +115,7 @@ function MaintenanceFixScores()
 	global $db_prefix, $modSettings, $smcFunc, $context;
 
 	$request = $smcFunc['db_query']('', '
-		SELECT id_game, score_type, extra_data
+		SELECT id_game, score_type, game_settings
 		FROM {db_prefix}arcade_games');
 
 	while ($row = $smcFunc['db_fetch_assoc']($request))

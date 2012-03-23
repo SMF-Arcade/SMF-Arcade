@@ -134,10 +134,8 @@ function ArcadeVbHtml(&$game, $auto_start = true)
 	global $txt, $context, $settings;
 
 	echo '
-	<script type="text/javascript" src="', $settings['default_theme_url'], '/scripts/swfobject.js" defer="defer"></script>
-	<div id="game" style="margin: auto; width: ', $game['extra_data']['width'], 'px; height: ', $game['extra_data']['height'], 'px; ">
-		', $txt['arcade_no_javascript'], '
-	</div>
+	
+	
 
 	<script language="JavaScript" type="text/javascript" defer="defer"><!-- // --><![CDATA[
 		var play_url = smf_scripturl + "?action=arcade;sa=play;xml";

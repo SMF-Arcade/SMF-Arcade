@@ -6,9 +6,9 @@
 	<property name="package" value="${phing.project.name}" override="true" />
 	<property name="version" value="2.6_Alpha" override="yes" />
 	
-	<property name="builddir" value="./temp" />
-	<property name="outdir" value="./dist" />
-	<property name="docdir" value="./temp" />
+	<property name="builddir" value="./.temp" />
+	<property name="outdir" value="./.dist" />
+	<property name="docdir" value="./.temp" />
 	
 	<target name="prepare">
 		<delete dir="${builddir}" />
@@ -51,6 +51,8 @@
 			<fileset dir="./">
 				<include name="*" />
 				<exclude name="build.*" />
+				<exclude name=".*" />
+				<exclude name="*.komodo*" />
 			</fileset>
 		</copy>	
     </target>
