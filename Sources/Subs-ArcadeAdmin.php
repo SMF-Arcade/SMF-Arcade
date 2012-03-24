@@ -450,7 +450,7 @@ function installGames($games, $move_games = false)
 			}
 
 			// Do we need to detect at least something?
-			if (!isset($game['extra_data']['width']) || !isset($game['extra_data']['height']) || !isset($game['extra_data']['version']) || !isset($game['extra_data']['bgcolor']))
+			if (!isset($game['game_settings']['width']) || !isset($game['game_settings']['height']) || !isset($game['game_settings']['version']) || !isset($game['game_settings']['bgcolor']))
 			{
 				$swf->open($directory . '/' . $row['game_file']);
 
